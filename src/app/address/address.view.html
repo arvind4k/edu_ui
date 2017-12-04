@@ -1,0 +1,64 @@
+
+	<!-- 
+<div class="container">
+
+
+	<form (ngSubmit)="onSubmitGet()" #userForm="ngForm">
+		<b>{{message}}</b>
+		<br>
+		<input name="action"  [(ngModel)]="action.method" type="radio" value="Update" /> Update
+		<input name="action" [(ngModel)]="action.method" type="radio" value="View" /> View
+		<input name="action" [(ngModel)]="action.method" type="radio" value="Create" /> Create
+		<input name="action" [(ngModel)]="action.method" type="radio" value="Delete" /> Delete
+	</form>
+	
+
+	<form (ngSubmit)="onSubmit()" #userForm="ngForm"  >
+		
+		<div class="form-group" *ngIf="action.method == 'Update' || action.method == 'View' || action.method == 'Delete'">
+			<label for="userId"  >Address ID</label>
+			<input type="text"  (keyup)="onActionGet()" size=20 class="form-control" id="addressId" required [(ngModel)]="model.addressId" name="addressId" #addressId="ngModel">
+		</div>
+
+		<br>
+	
+	
+		<fieldset class="form-group"  *ngIf="action.method == 'Create' || action.submethod == 'View'" [disabled]="action.method == 'View' || action.method == 'Delete'"> 
+	
+		-->
+		
+		<div class="form-group" >
+			<label for="addressType">Address Type</label>
+			<select class="form-control" id="addressType" [(ngModel)]="model.addressType" name="addressType" addressType="ngModel">
+				<option *ngFor="let addressType of addressTypes" [value]="addressType">{{addressType}}</option>
+			</select>
+
+			<label for="address1">Address Line1</label>
+			<input type="text" class="form-control" id="address1" required [(ngModel)]="model.address1" name="address1" #address1="ngModel">
+			
+			<label for="address1">Address Line2</label>
+			<input type="text" class="form-control" id="address2" required [(ngModel)]="model.address2" name="address2" #address2="ngModel">
+	
+			<label for="city">City</label>
+			<input type="text" class="form-control" id="city" required [(ngModel)]="model.city" name="city" #city="ngModel">
+			
+			<label for="state">State</label>
+			<input type="text" class="form-control" id="state" required [(ngModel)]="model.state" name="state" #state="ngModel">
+	
+			<label for="state">Country</label>
+			<input type="text" class="form-control" id="country" required [(ngModel)]="model.country" name="country" #name="ngModel">
+	
+			<label for="state">Zip/Pincode</label>
+			<input type="text" class="form-control" id="zip" required [(ngModel)]="model.zip" name="zip" #zip="ngModel">
+	
+		</div>	
+
+<!--
+	</fieldset>
+	
+	<button type="submit" *ngIf="(((action.method == 'Update' || action.method == 'Delete') && action.submethod == 'View' ) || action.method == 'Create') " class="btn btn-success" >Perform Action</button>
+	
+	</form>
+</div>
+-->
+

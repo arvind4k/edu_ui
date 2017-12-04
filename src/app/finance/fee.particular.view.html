@@ -1,0 +1,53 @@
+
+<div class="container">
+	<h1>Fee Particulars</h1>
+	
+	<form (ngSubmit)="onSubmit()" #feeParticularForm="ngForm">
+		<div class="form-group">
+			<label for="feeName">Name</label>
+			<input class="form-control" id="name" required [(ngModel)]="model.name" name="name" #name="ngModel">
+			<div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+			  Fee is required
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label for="description">Description</label>
+			<textarea class="form-control" id="description" [(ngModel)]="model.description" name="description" #description="ngModel"></textarea>
+		</div>
+		<div class="form-group">
+			<label for="mode">Input As</label><br>
+    		<input class="form-check-input" type="radio" id="inputAs" name="inputAs" value="PaymentPeriod.MONTH" [(ngModel)]="model.inputAs">Monthly &nbsp;&nbsp;
+    		<span *ngIf="model.paymentFrequencyId!='PaymentPeriod.MONTH'">
+    			<input class="form-check-input" type="radio" id="inputAs" name="inputAs" value="{{model.paymentFrequencyId}}" [(ngModel)]="model.inputAs">{{model.paymentFrequencyDesc}}
+    		</span>
+		</div>
+		<div class="form-group">
+			<label for="amount">Amount</label>
+			<input type="text" pattern="[0-9]+" maxlength="10" class="form-control" required id="amount" [(ngModel)]="model.amount" name="amount" #amount="ngModel">
+			<div [hidden]="amount.valid || amount.pristine" class="alert alert-danger">
+			  	Amount is required
+			</div>
+		</div>
+		
+		<div class="form-group">
+    		<label for="options">Fee Catrogry</label>
+    		<select class="form-control" id="feeCategoryId" [(ngModel)]="model.feeCategoryId" name="feeCategoryId" feeCategoryId="ngModel" required (change)="getBatchesByFeeCategoryId()">
+    			<option [value]="0">Select fee cateogry</option>
+				<option *ngFor="let feeCategory of feeCategories" [value]="feeCategory.feeCategoryId">{{feeCategory.feeName}}</option>
+			</select>
+		</div>
+
+		<div class="form-group" *ngIf="batchMappings">
+    		<label for="options">Select Batch(es)</label>
+    		<div *ngFor="let batch of batchMappings" let i="index">
+	        	<label>
+	            	<input type="checkbox" value='{{batch.batchName}}' checked="checked" id={{batch.batchId}}>
+	            	{{batch.batchName}}
+	        	</label>
+    		</div>
+		</div>
+
+		<button type="submit" class="btn btn-success" [disabled]="!feeParticularForm.form.valid">Save</button>
+	</form>
+</div>

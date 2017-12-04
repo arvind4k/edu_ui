@@ -1,0 +1,33 @@
+
+<div class="container">
+	
+	<h1>List of Discount categories</h1>
+	<form (ngSubmit)="onSubmit()" #pageForm="ngForm">
+
+        <table width="100%">
+            <tr>
+                <th colspan="4" style="text-align: right;"><a (click)="redirectToDiscountCategory(0)" >Create New Category</a></th>
+            </tr>
+            <tr><th colspan="4"></th></tr>
+        </table>
+
+		<table *ngIf="discountCategories" id="discountCategories" class="table table-striped table-bordered" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th style="width: 5%;">#</th>
+                <th style="width: 30%;">Discount Category</th>
+                <th style="width: 50%;">Description</th>
+                <th style="width: 15%;">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let discountCategory of discountCategories, let i=index">
+                <td>{{i+1}}</td>
+                <td><a (click)="redirectToDiscountCategory(discountCategory.discountCategoryId)">{{discountCategory.name}}</a></td>
+                <td>{{discountCategory.description}}</td>
+                <td><a (click)="deleteDiscountCategory(discountCategory.discountCategoryId)">Delete</a></td>
+            </tr>
+        </tbody>
+    </table>
+	</form>
+</div>

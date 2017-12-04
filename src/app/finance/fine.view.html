@@ -1,0 +1,39 @@
+
+<div class="container">
+    <h1>Configure Fine</h1>
+    
+    <form (ngSubmit)="onSubmit()" #fineForm="ngForm">
+        <div class="form-group">
+            <label for="fine">Fine</label>
+            <select class="form-control" id="fineId" [(ngModel)]="model.fineId" name="fineId" action="ngModel" (change)="getFineById()">
+                <option [value]="0">Create Fine</option>
+                <option *ngFor="let fine of fines" [value]="fine.fineId">{{fine.fineName}}</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="fineName">Fine name</label>
+            <input type="text" class="form-control" id="fineName" [(ngModel)]="model.fineName" name="fineName" #fineName="ngModel">
+        </div>
+        <hr>
+        <div *ngFor="let fineSlab of fineSlabs, let i=index">
+            <div class="form-group">
+            <label for="delayDays">Days after due date</label>
+            <input type="text" pattern="[0-9]+" value={{fineSlab.delayDays}} maxlength="10" class="form-control" id="delayDays" [(ngModel)]="fineSlabs[i].delayDays" name="delayDays">
+            </div>
+        <div class="form-group">
+            <label for="amount">Fine Value</label>
+            <input type="text" pattern="[0-9]+" maxlength="10" value={{fineSlab.fineValue}} class="form-control" required id="fineValue" [(ngModel)]="fineSlabs[i].fineValue" name="fineValue">
+            
+        </div>
+        <div class="form-group">
+            <label for="mode">Mode</label><br>
+            <input class="form-check-input" type="radio" id="fineMode" name="fineMode" value="Amount" [(ngModel)]="fineSlabs[i].fineMode">Amount &nbsp;&nbsp;
+            <input class="form-check-input" type="radio" id="fineMode" name="fineMode" value="Percentage" [(ngModel)]="fineSlabs[i].fineMode">Percentage
+        </div>
+        <hr>
+        </div>
+        <a (click)="addSlab()">Add more slab</a>&nbsp;&nbsp;
+        <button type="submit" class="btn btn-success" [disabled]="!fineForm.form.valid">Save</button>
+    </form>
+</div>

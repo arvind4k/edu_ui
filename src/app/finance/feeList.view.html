@@ -1,0 +1,39 @@
+
+<div class="container">
+	
+	<h1>List of Master Fee Categories</h1>
+	<form (ngSubmit)="onSubmit()" #pageForm="ngForm">
+		<div class="form-group">
+    		<label for="options">Select Batch</label>
+    		<select class="form-control" id="batchId" [(ngModel)]="batchId" name="batchId" batchId="ngModel" (change)= "getFeeList()">
+    			<option [value]="0">Select a Batch</option>
+				<option *ngFor="let batch of batches" [value]="batch.batchId">{{batch.batchName}}</option>
+			</select>
+		</div>
+
+		<table *ngIf="feeList" id="feeCategories" class="table table-striped table-bordered" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Fee name</th>
+                <th>Period</th>
+                <th>Payment Frequency</th>
+                <th>Fee Particulars</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tfoot>
+        </tfoot>
+        <tbody>
+            <tr *ngFor="let feeCategory of feeList, let i=index">
+                <td>{{i+1}}</td>
+                <td><a (click)="redirectToFeeView(feeCategory.feeCategoryId)">{{feeCategory.feeName}}</a></td>
+                <td>{{feeCategory.startDate| date:'MMM yyyy'}} - {{feeCategory.endDate| date:'MMM yyyy'}}</td>
+                <td>{{feeCategory.paymentFrequencyDesc}}</td>
+                <td><a (click)="redirectToFeeParticulars(feeCategory.feeCategoryId)">View</a></td>
+                <td><a (click)="redirectToFeeCategory(feeCategory.feeCategoryId)">Edit</a></td>
+            </tr>
+        </tbody>
+    </table>
+	</form>
+</div>

@@ -1,0 +1,85 @@
+
+<div class="container">
+	<h1>Master Fee Category</h1>
+	
+	<form (ngSubmit)="onSubmit()" #feeCategoryForm="ngForm">
+		<div class="form-group">
+			<label for="feeCategory">Fee Category</label>
+			<input class="form-control" id="feeName" required [(ngModel)]="model.feeName" name="feeName" #feeName="ngModel">
+			<div [hidden]="feeName.valid || feeName.pristine" class="alert alert-danger">
+			  Fee Category is required
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label for="description">Description</label>
+			<textarea class="form-control" id="feeDescription" [(ngModel)]="model.feeDescription" name="feeDescription" #feeDescription="ngModel"></textarea>
+		</div>
+
+		<div class="form-group">
+			<label for="startDate">Start Date</label>
+			<input class="form-control" id="startDate" required [(ngModel)]="model.startDate" name="startDate" #startDate="ngModel">
+			<div [hidden]="startDate.valid || startDate.pristine" class="alert alert-danger">
+			  Start date is required
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label for="endDate">End Date</label>
+			<input class="form-control" id="endDate" required [(ngModel)]="model.endDate" name="endDate" #endDate="ngModel">
+			<div [hidden]="endDate.valid || endDate.pristine" class="alert alert-danger">
+			  End date is required
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<label for="amount">Due Date</label>
+			<select class="form-control" id="dueDate" [(ngModel)]="model.dueDate" name="dueDate" #dueDate="ngModel" required>
+				<option *ngFor="let dueDay of dueDay" [value]="dueDay">{{dueDay}} of the month</option>
+			</select>
+
+			<div [hidden]="dueDate.valid || dueDate.pristine" class="alert alert-danger">
+			  	Due date is required
+			</div>
+		</div>
+		
+		<div class="form-group">
+    		<label for="options">Payment Frequency</label>
+    		<select class="form-control" id="paymentFrequencyId" [(ngModel)]="model.paymentFrequencyId" name="paymentFrequencyId" #paymentFrequencyId="ngModel" required>
+    			<option [value]="0">Select a payment frequency</option>
+				<option *ngFor="let paymentFrequency of paymentFrequencies" [value]="paymentFrequency.paymentFrequencyId">{{paymentFrequency.description}}</option>
+			</select>
+		</div>
+
+		<div class="form-group">
+    		<label for="options">Select Batch(es)</label>
+    		<div *ngFor="let batch of batches" let i="index">
+	        	<label>
+	            	<input type="checkbox" value='{{batch.batchName}}' checked='{{batch.checked}}' (change)="checkedBatches(batch.batchId)" id={{batch.batchId}}>
+	            	{{batch.batchName}}
+	        	</label>
+    		</div>
+		</div>
+
+<!-- 		<div class="row">
+        <div class='col-sm-6'>
+            <div class="form-group">
+                <div class='input-group date' id='datetimepicker1'>
+                    <input type='text' class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(function () {
+                $('#datetimepicker1').datetimepicker();
+            });
+        </script>
+    </div> -->
+
+
+		<button type="submit" class="btn btn-success" [disabled]="!feeCategoryForm.form.valid">Save & Continue</button>
+	</form>
+</div>
