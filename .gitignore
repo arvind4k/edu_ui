@@ -46,3 +46,7 @@ Thumbs.db
 target
 RemoteSystemsTempFiles
 /RemoteSystemsTempFiles/
+*.js.map
+node_modules
+/node_modules/
+*.sublime-workspace
