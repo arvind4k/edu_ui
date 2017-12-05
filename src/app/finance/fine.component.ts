@@ -11,7 +11,6 @@ import { FeeService } from './fee.service';
 
 export class FineComponent {
     model=new Fine();
-    fineSlabs:Array<FineSlab>=[];
     fines: Array<Fine>=[];
     submitted = false;
 
@@ -21,13 +20,12 @@ export class FineComponent {
 
     ngOnInit(): void {
         this.model.fineId="0";
+        this.model.fineSlabs.push(new FineSlab());
         this.getAllFines();
-        this.fineSlabs.push(new FineSlab());
     }
 
     addSlab(){
-        console.log(this.fineSlabs);
-        this.fineSlabs.push(new FineSlab());
+        this.model.fineSlabs.push(new FineSlab());
     }
 
     getAllFines() {
@@ -43,13 +41,9 @@ export class FineComponent {
         });
     }
     async onSubmit() {
-        this.model.fineSlabs=this.fineSlabs;
-        
         console.log(JSON.stringify(this.model));
         await this.feeService.saveFine(this.model).then(result => this.model=result); 
         this.submitted = true; 
         console.log("fine id =======",this.model.fineId);
-        
-        
     }
 }
