@@ -7,7 +7,7 @@ import { Router, ActivatedRoute } from '@angular/router';
   templateUrl: './menu.view.html'
 })
 export class MenuComponent {
-  	
+  	title = 'eSchool';
   	constructor(
         private authenticationService: AuthenticationService,
         private router: Router,
