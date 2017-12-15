@@ -4,15 +4,21 @@ import { RequestOptions, Headers, Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { FeeCategory, FeeBatchMapping, FeeParticular, Fine } from './fee.model';
 import { Page } from '../common/common.model';
-
-
-
+import { AuthenticationService } from '../login/authentication.service'
 
 @Injectable()
 export class FeeService {
-    private headers = new Headers({'Accepts':'text/plain ; application/json', 'Content-type':'Application/json; charset=utf-8', 'Access-Control-Allow-Origin':'*'});
+    private headers = new Headers({
+     'Content-Type': 'application/json; charset=utf-8',
+     'Accepts':'text/plain ; application/json',
+     'Access-Control-Allow-Origin':'*',
+     'Authorization': 'Bearer ' + this.authenticationService.getToken()
+     });
    
-    constructor(private http: Http) { }
+    constructor(
+      private http: Http,
+      private authenticationService: AuthenticationService) {
+    }
       
     getFeeCategories():Observable<Array<FeeCategory>> {
         return this.http.get('http://localhost:9002/fee').map(res => res.json()).map((data: Array<FeeCategory>) => {
@@ -34,6 +40,7 @@ export class FeeService {
     }
 
     getFeeCategoriesByBatchId(batchId:string):Observable<Array<FeeCategory>> {
+        console.log("headers ===== ",this.headers);
         return this.http.get('http://localhost:9002/fee/list/'+batchId).
             map(res => res.json()).map((data: Array<FeeCategory>) => {
             return data as FeeCategory[];

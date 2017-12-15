@@ -19,9 +19,13 @@ import { DiscountListComponent } from './finance/discount/discount.list.componen
 
 import { UserService } from './user/user.service';
 import { FeeService } from './finance/fee.service';
+import { AuthenticationService } from './login/authentication.service'
 import { CommonService } from './common/common.service';
 import { DiscountService } from './finance/discount/discount.service';
 import { FineComponent } from './finance/fine.component';
+import { LoginComponent } from './login/login.component';
+import { CanActivateAuthGuard } from './login/can-activate.authguard';
+import { MenuComponent } from './home/menu.component';
 
 @NgModule({
   imports: [
@@ -42,9 +46,11 @@ import { FineComponent } from './finance/fine.component';
     DiscountComponent,
     DiscountCategoryListComponent,
     DiscountListComponent,
-    FineComponent
+    FineComponent,
+    LoginComponent,
+    MenuComponent
   ],
-  providers:[ UserService, FeeService, CommonService, DiscountService, DatePipe ],
+  providers:[ UserService, FeeService, CommonService, DiscountService, DatePipe, AuthenticationService, CanActivateAuthGuard],
   bootstrap: [ HomeComponent ]
 })
 export class AppModule { }

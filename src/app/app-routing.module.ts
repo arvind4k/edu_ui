@@ -14,22 +14,25 @@ import { DiscountComponent } from './finance/discount/discount.component';
 import { DiscountCategoryListComponent } from './finance/discount/disCategory.list.component';
 import { DiscountListComponent } from './finance/discount/discount.list.component';
 import { FineComponent } from './finance/fine.component';
+import { LoginComponent } from './login/login.component';
+import { CanActivateAuthGuard } from './login/can-activate.authguard';
 
 const routes: Routes = [
-  //{ path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'home',  component: HomeComponent },
-  { path: 'signup', component: UserComponent },
-  { path: 'feeCategory/:feeId', component: FeeCategoryComponent },
-  { path: 'feeParticular/:feeId', component: FeeParticularComponent },
-  { path: 'feeParticular/edit/:particualrId', component: FeeParticularComponent },
-  { path: 'feeList/:id', component: FeeListComponent },
-  { path: 'particularList/:feeId/:batchId', component: FeeParticularListComponent },
-  { path: 'feeView/:feeId/:batchId', component: FeeViewComponent },
-  { path: 'discount/category/:discountCategoryId', component: DiscountCategoryComponent },
-  { path: 'discount/categorylist', component: DiscountCategoryListComponent },
-  { path: 'discount/:discountId', component: DiscountComponent },
-  { path: 'discount', component: DiscountListComponent },
-  { path: 'fine', component: FineComponent }
+  //{ path: '', component: HomeComponent, canActivate: [CanActivateAuthGuard] },
+  { path: 'home',  component: HomeComponent, canActivate: [CanActivateAuthGuard] },
+  { path: 'signup', component: UserComponent, canActivate: [CanActivateAuthGuard] },
+  { path: 'feeCategory/:feeId', component: FeeCategoryComponent , canActivate: [CanActivateAuthGuard]},
+  { path: 'feeParticular/:feeId', component: FeeParticularComponent , canActivate: [CanActivateAuthGuard]},
+  { path: 'feeParticular/edit/:particualrId', component: FeeParticularComponent , canActivate: [CanActivateAuthGuard]},
+  { path: 'feeList/:id', component: FeeListComponent , canActivate: [CanActivateAuthGuard]},
+  { path: 'particularList/:feeId/:batchId', component: FeeParticularListComponent , canActivate: [CanActivateAuthGuard]},
+  { path: 'feeView/:feeId/:batchId', component: FeeViewComponent , canActivate: [CanActivateAuthGuard]},
+  { path: 'discount/category/:discountCategoryId', component: DiscountCategoryComponent , canActivate: [CanActivateAuthGuard]},
+  { path: 'discount/categorylist', component: DiscountCategoryListComponent , canActivate: [CanActivateAuthGuard]},
+  { path: 'discount/:discountId', component: DiscountComponent, canActivate: [CanActivateAuthGuard]},
+  { path: 'discount', component: DiscountListComponent, canActivate: [CanActivateAuthGuard]},
+  { path: 'fine', component: FineComponent , canActivate: [CanActivateAuthGuard]},
+  { path: 'login', component: LoginComponent}
 ];
 
 @NgModule({

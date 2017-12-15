@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-//import { COUNTRIES } from '../common/data';
-//import { Country } from '../common/common.model';
+import { COUNTRIES } from '../common/data';
+import { Country } from '../common/common.model';
 import { User } from './user.model';
 import { Observable }     from 'rxjs/Observable';
 
@@ -12,28 +12,35 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class UserService {
-	private headers = new Headers({ 'Content-Type': 'application/json' });
 
-	constructor(private http: Http) { }
+	constructor(private http: HttpClient) { }
   	
-	createUser(user: User): Promise<User> {
-        return this.http
-          .post("http://localhost:1900/user", JSON.stringify(user), { headers: this.headers })
-          .toPromise()
-          .then(res => res.json() as User)
-          .catch(this.handleError);
+    getCountries(): Promise<Country[]> {
+    	return Promise.resolve(COUNTRIES);
+  	}
+
+  	user:User
+  	
+
+  	/*getUser(userId: string) {
+  		return this.http.get("http://localhost:1000/user/"+userId).map((response: Response) => <User>response.json());
+    }*/
+
+
+  	/*getUser(userId: string) {
+  		this.http.get<MyJsonData>('http://localhost:9003/batch', {observe: 'response'}).subscribe(resp => {
+  			console.log("Test response ================== "+resp.body._embedded);
+  			//return resp.body.username;
+  		});
+  	
+  	}*/
+
+  	private handleError(error: any) {
+	    // In a real world app, we might use a remote logging infrastructure
+	    // We'd also dig deeper into the error to get a better message
+	    let errMsg = (error.message) ? error.message :
+	        error.status ? `${error.status} - ${error.statusText}` : 'Server error';
+	    console.log(errMsg); // log to console instead
+	    return Observable.throw(errMsg);
 	}
-    
-    getUser(user: User):Observable<User> {
-        return this.http.get('http://localhost:1900/user/' + user.userId).map(res => res.json()).map((data: User) => {
-        console.log(data);
-        return data as User;
-      });
-    }
-
-	private handleError(error: any): Promise<any> {
-        console.error('An error occurred', error);
-        return Promise.reject(error.message || error);
-    }
-
 }

@@ -1,57 +1,38 @@
 
 <div class="container">
-
-	<!-- Below block of code generation Action options on web page -->
-	<form (ngSubmit)="onSubmitGet()" #userForm="ngForm">
-		<b>{{message}}</b>
-		<br>
-		<input name="action"  [(ngModel)]="action.method" type="radio" (ngModelChange)="onSelectNonCreate()" value="Update" /> Update
-		<input name="action" [(ngModel)]="action.method" type="radio" (ngModelChange)="onSelectNonCreate()" value="View" /> View
-		<input name="action" [(ngModel)]="action.method" type="radio" (ngModelChange)="onSelectCreate()" value="Create" /> Create
-		<input name="action" [(ngModel)]="action.method" type="radio" (ngModelChange)="onSelectNonCreate()" value="Delete" /> Delete
-	</form>
+	<h1>User Signup</h1>
 	
-	<!-- Below code show USer ID field only if operation involving seraching of user ID. Like Update/Vide/Delete need search -->
-	<form (ngSubmit)="onSubmit()" #userForm="ngForm"  >
-		
-		<div class="form-group" *ngIf="action.method == 'Update' || action.method == 'View' || action.method == 'Delete'">
-			<label for="userId"  >User ID</label>
-			<input type="text"  (keyup)="onActionGet()" size=20 class="form-control" id="userId" required [(ngModel)]="model.userId" name="userId" #userId="ngModel">
-		</div>
-
-		<br>
-	
-		<!-- Below fieldset is written from the perspective that all field can be disabled/enabled/visible/hidden in one go -->
-		<fieldset class="form-group"  *ngIf="action.method == 'Create' || action.submethod == 'View'" [disabled]="action.method == 'View' || action.method == 'Delete'"> 
-	
-	<!-- Below code has all data fields on form -->
-		<div >
-			<label for="firstName" >First Name</label>
-			<input type="text" size=20 class="form-control"  id="firstName" required [(ngModel)]="model.firstName" name="firstName" #firstName="ngModel">
-			
-			<label for="middleName">Middle Name</label>
-			<input type="text" size=20 class="form-control" id="middleName" required [(ngModel)]="model.middleName" name="middleName" #lastName="ngModel">
-
-			<label for="lastName">Last Name</label>
-			<input type="text" size=20 class="form-control" id="lastName" required [(ngModel)]="model.lastName" name="lastName" #lastName="ngModel">
-			
-			<label for="emailId">Email Id / Username</label>
-			<input type="text" class="form-control" id="username" required [(ngModel)]="model.username" name="username" #username="ngModel">
-			
-			<label for="dob">Date of Birth</label>
-			<input type="text" class="form-control" id="dob" required [(ngModel)]="model.dob" name="dob" #dob="ngModel">
-		</div>	
-		
+	<form (ngSubmit)="onSubmit()" #userForm="ngForm">
 		<div class="form-group">
-			<address-app *ngFor="let address1 of addresses" [model]="address1" >Loading...</address-app>
-			<label for="address">Another Address</label>
-			<button type=button (click)="onSelectCreate()">+</button>
+			<label for="emailId">Email Id</label>
+			<input type="text" class="form-control" id="username" required [(ngModel)]="model.username" name="username" #username="ngModel">
+			<div [hidden]="username.valid || username.pristine" class="alert alert-danger">
+			  Email Id is required
+			</div>
 		</div>
-		<br>
-	</fieldset>
-	<!-- Button is outside of fieldset tag so that it can be enabled/disabled as needed -->
-	<button type="submit" *ngIf="(((action.method == 'Update' || action.method == 'Delete') && action.submethod == 'View' ) || action.method == 'Create') " class="btn btn-success" >Perform Action</button>
-	
+
+		<div class="form-group">
+			<label for="firstName">First Name</label>
+			<input type="text" class="form-control" id="firstName" required [(ngModel)]="model.firstName" name="firstName" #firstName="ngModel">
+			<div [hidden]="firstName.valid || firstName.pristine" class="alert alert-danger">
+				First Name is required
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label for="lastName">Last Name</label>
+			<input type="text" class="form-control" id="lastName" required [(ngModel)]="model.lastName" name="lastName" #lastName="ngModel">
+			<div [hidden]="lastName.valid || lastName.pristine" class="alert alert-danger">
+				Last Name is required
+			</div>
+		</div>	
+
+		<div class="form-group">
+			<label for="country">Country</label>
+			<select class="form-control" id="country" required>
+				<option *ngFor="let country of countries" [value]="country.alpha2_code">{{country.name}}</option>
+			</select>
+		</div>
+		<button type="submit" class="btn btn-success" [disabled]="!userForm.form.valid">Signup</button>
 	</form>
 </div>
-
