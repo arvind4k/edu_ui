@@ -26,6 +26,7 @@ import { FineComponent } from './finance/fine.component';
 import { LoginComponent } from './login/login.component';
 import { CanActivateAuthGuard } from './login/can-activate.authguard';
 import { MenuComponent } from './home/menu.component';
+import { MainComponent } from './home/main.component';
 
 @NgModule({
   imports: [
@@ -48,9 +49,10 @@ import { MenuComponent } from './home/menu.component';
     DiscountListComponent,
     FineComponent,
     LoginComponent,
-    MenuComponent
+    MenuComponent,
+    MainComponent,
   ],
   providers:[ UserService, FeeService, CommonService, DiscountService, DatePipe, AuthenticationService, CanActivateAuthGuard],
-  bootstrap: [ HomeComponent ]
+  bootstrap: [ MainComponent ]
 })
 export class AppModule { }
