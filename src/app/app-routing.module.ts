@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 //import { UserComponent }   from './user/user.component';
 import { HomeComponent }   from './home/home.component';
-import { UserComponent }   from './user/user.component';
+import { UserComponent }   from './profile/user/user.component';
 import { FeeCategoryComponent }   from './finance/fee.category.component';
 import { FeeParticularComponent }   from './finance/fee.particular.component';
 import { FeeListComponent }   from './finance/fee.list.component';
@@ -15,10 +15,13 @@ import { DiscountCategoryListComponent } from './finance/discount/disCategory.li
 import { DiscountListComponent } from './finance/discount/discount.list.component';
 import { FineComponent } from './finance/fine.component';
 import { LoginComponent } from './login/login.component';
+import { EorgComponent } from './profile/eorg/eorg.component';
+import { TransportComponent } from './admin/transport/transport.component';
+
 import { CanActivateAuthGuard } from './login/can-activate.authguard';
 
 const routes: Routes = [
-  //{ path: '', component: HomeComponent, canActivate: [CanActivateAuthGuard] },
+  { path: '', component: HomeComponent, canActivate: [CanActivateAuthGuard] },
   { path: 'home',  component: HomeComponent, canActivate: [CanActivateAuthGuard] },
   { path: 'signup', component: UserComponent, canActivate: [CanActivateAuthGuard] },
   { path: 'feeCategory/:feeId', component: FeeCategoryComponent , canActivate: [CanActivateAuthGuard]},
