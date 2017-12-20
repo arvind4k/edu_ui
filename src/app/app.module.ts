@@ -27,6 +27,7 @@ import { LoginComponent } from './login/login.component';
 import { CanActivateAuthGuard } from './login/can-activate.authguard';
 import { MenuComponent } from './home/menu.component';
 import { MainComponent } from './home/main.component';
+import { HeaderComponent } from './home/header.component';
 
 @NgModule({
   imports: [
@@ -51,6 +52,7 @@ import { MainComponent } from './home/main.component';
     LoginComponent,
     MenuComponent,
     MainComponent,
+    HeaderComponent,
   ],
   providers:[ UserService, FeeService, CommonService, DiscountService, DatePipe, AuthenticationService, CanActivateAuthGuard],
   bootstrap: [ MainComponent ]

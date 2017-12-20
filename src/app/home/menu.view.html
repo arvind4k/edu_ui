@@ -1,10 +1,199 @@
-<h1>{{title}}</h1>
-<nav>
-	<a routerLink="/signup" routerLinkActive="active">User Signup</a>
-	<a routerLink="/feeCategory/0" routerLinkActive="active">Create Fee</a>
-	<a routerLink="/feeList/0" routerLinkActive="active">Fee List</a>
-	<a routerLink="/discount/categorylist" routerLinkActive="active">Discount Category</a>
-	<a routerLink="/discount" routerLinkActive="active">Discount</a>
-	<a routerLink="/fine" routerLinkActive="active">Configure Fine</a>
-	<a (click)="logout()">Logout</a>
-</nav>
+<div class="page-sidebar fixedscroll">
+    <!-- MAIN MENU - START -->
+    <div class="page-sidebar-wrapper" id="main-menu-wrapper"> 
+        <!-- USER INFO - START -->
+        <div class="profile-info row">
+            <div class="profile-image col-xs-4">
+                <a href="ui-profile.html">
+                    <img alt="" src="/assets/data/profile/profile-university.jpg" class="img-responsive img-circle">
+                </a>
+            </div>
+            <div class="profile-details col-xs-8">
+                <h3>
+                    <a href="ui-profile.html">Test User</a>
+                    <!-- Available statuses: online, idle, busy, away and offline -->
+                    <span class="profile-status online"></span>
+                </h3>
+                <p class="profile-title">Head of IT</p>
+            </div>
+        </div>
+        <!-- USER INFO - END -->
+        <ul class='wraplist'>	
+            <li class=""> 
+                <a href="index-university.html">
+                    <i class="fa fa-dashboard"></i>
+                    <span class="title">Dashboard</span>
+                </a>
+            </li>
+            <li class="open"> 
+                <a href="javascript:;">
+                    <i class="fa fa-users"></i>
+                    <span class="title">Finance</span>
+                    <span class="arrow open"></span>
+                </a>
+                <ul class="sub-menu" style='display:block;'>
+                    <li>
+                         <a class="active" routerLink="/feeList/0" routerLinkActive="active">All Fees</a>
+                    </li>
+                    <li>
+                        <a class="" href="uni-professor-add.html">View Fee</a>
+                    </li>
+                    <li>
+                        <a class="" href="uni-professor-add.html">Create Fee</a>
+                    </li>
+                    <li>
+                        <a class="" href="uni-professor-edit.html">Create Fee Particulars</a>
+                    </li>
+                    <li>
+                        <a class="" href="uni-professor-profile.html">All Discounts</a>
+                    </li>
+                    <li>
+                        <a class="" href="uni-professor-profile.html">Create Discounts</a>
+                    </li>
+                    <li>
+                        <a class="" href="uni-professor-profile.html">Create Fine</a>
+                    </li>
+                </ul>
+            </li>
+            <li> 
+                <a href="javascript:;">
+                    <i class="fa fa-user"></i>
+                    <span class="title">Students</span>
+                    <span class="arrow"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a class="" href="uni-students.html" >All Students</a>
+                    </li>
+                    <li>
+                        <a class="active" href="uni-student-add.html" >Add Student</a>
+                    </li>
+                    <li>
+                        <a class="" href="uni-student-edit.html" >Edit Student</a>
+                    </li>
+                    <li>
+                        <a class="" href="uni-student-profile.html" >Student Profile</a>
+                    </li>
+                </ul>
+            </li>
+            <li class=""> 
+                <a href="javascript:;">
+                    <i class="fa fa-bar-chart"></i>
+                    <span class="title">Reports</span>
+                    <span class="arrow "></span>
+                </a>
+                <ul class="sub-menu" >
+                    <li>
+                        <a class="" href="uni-report-student.html" >Students</a>
+                    </li>
+                    <li>
+                        <a class="" href="uni-report-university.html" >University</a>
+                    </li>
+                    <li>
+                        <a class="" href="uni-report-professors.html" >Professors</a>
+                    </li>
+                </ul>
+            </li>
+                    
+            <li class=""> 
+                <a href="javascript:;">
+                    <i class="fa fa-graduation-cap"></i>
+                    <span class="title">Courses</span>
+                    <span class="arrow "></span>
+                </a>
+                <ul class="sub-menu" >
+                    <li>
+                        <a class="" href="uni-courses.html" >All Courses</a>
+                    </li>
+                    <li>
+                        <a class="" href="uni-course-add.html" >Add Course</a>
+                    </li>
+                    <li>
+                        <a class="" href="uni-course-edit.html" >Edit Course</a>
+                    </li>
+                    <li>
+                        <a class="" href="uni-course-info.html" >Course Info</a>
+                    </li>
+                </ul>
+            </li>
+            <li class=""> 
+                <a href="javascript:;">
+                    <i class="fa fa-book"></i>
+                    <span class="title">Library</span>
+                    <span class="arrow "></span>
+                </a>
+                <ul class="sub-menu" >
+                    <li>
+                        <a class="" href="uni-library.html" >All Library Assets</a>
+                    </li>
+                    <li>
+                        <a class="" href="uni-library-add.html" >Add Library Asset</a>
+                    </li>
+                    <li>
+                        <a class="" href="uni-library-edit.html" >Edit Library Asset</a>
+                    </li>
+                </ul>
+            </li>
+            <li class=""> 
+                <a href="javascript:;">
+                    <i class="fa fa-university"></i>
+                    <span class="title">Departments</span>
+                    <span class="arrow "></span>
+                </a>
+                <ul class="sub-menu" >
+                    <li>
+                        <a class="" href="uni-departments.html" >All Departments</a>
+                    </li>
+                    <li>
+                        <a class="" href="uni-department-add.html" >Add Department</a>
+                    </li>
+                    <li>
+                        <a class="" href="uni-department-edit.html" >Edit Department</a>
+                    </li>
+                </ul>
+            </li>
+            <li class=""> 
+                <a href="javascript:;">
+                    <i class="fa fa-users"></i>
+                    <span class="title">Staff</span>
+                    <span class="arrow "></span>
+                </a>
+                <ul class="sub-menu" >
+                    <li>
+                        <a class="" href="uni-staffs.html" >All Staff Members</a>
+                    </li>
+                    <li>
+                        <a class="" href="uni-staff-add.html" >Add Staff Member</a>
+                    </li>
+                    <li>
+                        <a class="" href="uni-staff-edit.html" >Edit Staff Member</a>
+                    </li>
+                    <li>
+                        <a class="" href="uni-staff-profile.html" >Staff Member Profile</a>
+                    </li>
+                </ul>
+            </li>
+            <li class=""> 
+                <a href="uni-events.html">
+                    <i class="fa fa-calendar"></i>
+                    <span class="title">Timetable Management</span>
+                </a>
+            </li>
+        </ul>
+
+        <div class="menustats">    
+            <h5>Project Progress</h5>
+            <div class="progress">
+                <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%;">
+                </div>
+            </div>
+            <h5>Target Achieved</h5>
+            <div class="progress">
+                <div class="progress-bar progress-bar-accent" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;">
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- MAIN MENU - END -->
+</div>
