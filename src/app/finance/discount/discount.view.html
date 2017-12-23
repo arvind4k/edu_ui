@@ -1,79 +1,156 @@
+<header-app></header-app>
 <menu-app></menu-app>
-<div class="container">
-	<h1>Create Discount</h1>
-	<div class="form-group" *ngIf="submitted && model.discountCategoryId">
-		<label><font color="green"> Discount created successfully</font></label>
-	</div>
-	<form (ngSubmit)="onSubmit()" #discountForm="ngForm">
-		<div class="form-group">
-    		<label for="discountCategory">Discount Type</label>
-    		<select class="form-control" id="discountCategoryId" [(ngModel)]="model.discountCategoryId" name="discountCategoryId" #discountCategoryId="ngModel" required (change)="getStudentCategories()">
-    			<option [value]="0">Select a discount type</option>
-				<option *ngFor="let discountCategory of discountCategories" [value]="discountCategory.categoryId">{{discountCategory.name}}</option>
-			</select>
-		</div>
+<section id="main-content" class=" ">
+<section class="wrapper main-wrapper row" style=''>
+    <div class='col-xs-12'>
+        <div class="page-title">
+            <div class="pull-left">
+                <h1 class="title">Discount</h1><!-- PAGE HEADING TAG - END -->
+            </div>
+            <div class="pull-right hidden-xs">
+                <ol class="breadcrumb">
+                    <li>
+                        <a routerLink="/home" routerLinkActive="active"><i class="fa fa-home"></i>Home</a>
+                    </li>
+                    <li>
+                        <a (click)="backClicked()">Finance</a>
+                    </li>
+                    <li class="active">
+                        <strong>Discount</strong>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+        <!-- MAIN CONTENT AREA STARTS -->
+    <div class="col-xs-12">
+        <section class="box ">
+        <header class="panel_header">
+        	<h2 class="title pull-left">Create A Discount</h2>
+            <div class="actions panel_actions pull-right">
+                <a class="box_toggle fa fa-chevron-down"></a>
+                <a class="box_setting fa fa-cog" data-toggle="modal" href="#section-settings"></a>
+                <a class="box_close fa fa-times"></a>
+            </div>
+        </header>
+        <div class="content-body">
+        <div class="row">
 
-		<div class="form-group" *ngIf="model.discountCategoryId=='Category.STUDENT_CATEGORY'">
-    		<label for="options">Student Category</label>
-    		<select class="form-control" id="studentCategoryId" [(ngModel)]="model.studentCategoryId" name="studentCategoryId" #studentCategoryId="ngModel">
-    			<option [value]="0">Select a student category</option>
-				<option *ngFor="let studentCategory of studentCategories" [value]="studentCategory.code">{{studentCategory.name}}</option>
-			</select>
+		<div class="form-group" *ngIf="submitted && model.discountCategoryId">
+			<label><font color="green"> Discount created successfully</font></label>
 		</div>
-
-		<div class="form-group" *ngIf="model.discountCategoryId=='Category.STUDENT'">
-    		<label for="student">Student</label>
-    		<select class="form-control" id="studentId" [(ngModel)]="model.studentId" name="studentId" #studentId="ngModel" >
-    			<option [value]="0">Select a student</option>
-				<option *ngFor="let student of students" [value]="student.studentId">{{student.name}}</option>
-			</select>
-		</div>
-
-		<div class="form-group">
-			<label for="discountName">Discount Name</label>
-			<input class="form-control" id="discountName" required [(ngModel)]="model.discountName" name="discountName" #discountName="ngModel">
-			<div [hidden]="discountName.valid || discountName.pristine" class="alert alert-danger">
-			  Discount name is required
+		<form (ngSubmit)="onSubmit()" #discountForm="ngForm">
+			<div class="col-xs-12 col-sm-9 col-md-8">
+			<div class="form-group">
+	    		<label class="form-label">Discount Type</label>
+	    		<span class="desc"></span>
+	    		<div class="controls">
+		    		<select class="form-control" id="discountCategoryId" [(ngModel)]="model.discountCategoryId" name="discountCategoryId" #discountCategoryId="ngModel" required (change)="getStudentCategories()">
+		    			<option [value]="0">Select a discount type</option>
+						<option *ngFor="let discountCategory of discountCategories" [value]="discountCategory.categoryId">{{discountCategory.name}}</option>
+					</select>
+				</div>
 			</div>
-		</div>
 
-		<div class="form-group">
-    		<label for="batch">Batch</label>
-    		<select class="form-control" id="batchId" [(ngModel)]="model.batchId" name="batchId" #batchId="ngModel" required (change)= "getFeeList()">
-    			<option [value]="0">Select a batch</option>
-				<option *ngFor="let batch of batches" [value]="batch.batchId">{{batch.batchName}}</option>
-			</select>
-		</div>
+			<div class="form-group" *ngIf="model.discountCategoryId=='Category.STUDENT_CATEGORY'">
+	    		<label class="form-label">Student Category</label>
+	    		<span class="desc"></span>
+	    		<div class="controls">
+		    		<select class="form-control" id="studentCategoryId" [(ngModel)]="model.studentCategoryId" name="studentCategoryId" #studentCategoryId="ngModel">
+		    			<option [value]="0">Select a student category</option>
+						<option *ngFor="let studentCategory of studentCategories" [value]="studentCategory.code">{{studentCategory.name}}</option>
+					</select>
+				</div>
+			</div>
 
-		<div class="form-group">
-    		<label for="feeCategory">Fee Category</label>
-    		<select class="form-control" id="feeCategoryId" [(ngModel)]="model.feeCategoryId" name="feeCategoryId" #feeCategoryId="ngModel" required (change)= "getFeeParticularList()">
-    			<option [value]="0">Select a fee category</option>
-				<option *ngFor="let feeCategory of feeCategories" [value]="feeCategory.feeCategoryId">{{feeCategory.feeName}}</option>
-			</select>
-		</div>
-		<div class="form-group">
-    		<label for="batch">Discount For</label>
-    		<select class="form-control" id="appliedOn" [(ngModel)]="model.appliedOn" name="appliedOn" #appliedOn="ngModel" required>
-    			<option [value]="0">Full Amount</option>
-				<option *ngFor="let feeParticular of feeParticulars" [value]="feeParticular.feeParticularId">{{feeParticular.name}}</option>
-			</select>
-		</div>
-		<div class="form-group">
-			<label for="mode">Choose discount mode</label><br>
-    		<input class="form-check-input" type="radio" checked="checked" name="mode" value="Amount" [(ngModel)]="model.discountMode">Amount &nbsp;&nbsp;
-    		<input class="form-check-input" type="radio" name="mode" value="Percentage" [(ngModel)]="model.discountMode">Percentage
-		</div>
-		<div class="form-group" *ngIf="model.discountMode=='Amount'">
-			<label for="amount">Amount</label>
-			<input class="form-control" id="amount" required [(ngModel)]="model.amount" name="amount" #amount="ngModel" required>
-		</div>
+			<div class="form-group" *ngIf="model.discountCategoryId=='Category.STUDENT'">
+	    		<label class="form-label">Student</label>
+	    		<span class="desc"></span>
+	    		<div class="controls">
+		    		<select class="form-control" id="studentId" [(ngModel)]="model.studentId" name="studentId" #studentId="ngModel" >
+		    			<option [value]="0">Select a student</option>
+						<option *ngFor="let student of students" [value]="student.studentId">{{student.name}}</option>
+					</select>
+				</div>
+			</div>
 
-		<div class="form-group" *ngIf="model.discountMode=='Percentage'">
-			<label for="percentage">Percentage</label>
-			<input class="form-control" id="percentage" required [(ngModel)]="model.percentage" name="percentage" #percentage="ngModel" required>
+			<div class="form-group">
+				<label class="form-label">Discount Name</label>
+				<span class="desc"></span>
+	    		<div class="controls">
+					<input class="form-control" id="discountName" required [(ngModel)]="model.discountName" name="discountName" #discountName="ngModel">
+					<div [hidden]="discountName.valid || discountName.pristine" class="alert alert-danger">
+					  Discount name is required
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group">
+	    		<label class="form-label">Batch</label>
+	    		<span class="desc"></span>
+	    		<div class="controls">
+		    		<select class="form-control" id="batchId" [(ngModel)]="model.batchId" name="batchId" #batchId="ngModel" required (change)= "getFeeList()">
+		    			<option [value]="0">Select a batch</option>
+						<option *ngFor="let batch of batches" [value]="batch.batchId">{{batch.batchName}}</option>
+					</select>
+				</div>
+			</div>
+
+			<div class="form-group">
+	    		<label class="form-label">Fee Category</label>
+	    		<span class="desc"></span>
+	    		<div class="controls">
+		    		<select class="form-control" id="feeCategoryId" [(ngModel)]="model.feeCategoryId" name="feeCategoryId" #feeCategoryId="ngModel" required (change)= "getFeeParticularList()">
+		    			<option [value]="0">Select a fee category</option>
+						<option *ngFor="let feeCategory of feeCategories" [value]="feeCategory.feeCategoryId">{{feeCategory.feeName}}</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+	    		<label class="form-label">Discount For</label>
+	    		<span class="desc"></span>
+	    		<div class="controls">
+		    		<select class="form-control" id="appliedOn" [(ngModel)]="model.appliedOn" name="appliedOn" #appliedOn="ngModel" required>
+		    			<option [value]="0">Full Amount</option>
+						<option *ngFor="let feeParticular of feeParticulars" [value]="feeParticular.feeParticularId">{{feeParticular.name}}</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="form-label">Choose discount mode</label>
+				<span class="desc"></span>
+	    		<div class="controls">
+		    		<input class="form-check-input" type="radio" checked="checked" name="mode" value="Amount" [(ngModel)]="model.discountMode">Amount &nbsp;&nbsp;
+		    		<input class="form-check-input" type="radio" name="mode" value="Percentage" [(ngModel)]="model.discountMode">Percentage
+		    	</div>
+			</div>
+			<div class="form-group" *ngIf="model.discountMode=='Amount'">
+				<label class="form-label">Amount</label>
+				<span class="desc"></span>
+	    		<div class="controls">
+					<input class="form-control" id="amount" required [(ngModel)]="model.amount" name="amount" #amount="ngModel" required>
+				</div>
+			</div>
+
+			<div class="form-group" *ngIf="model.discountMode=='Percentage'">
+				<label class="form-label">Percentage</label>
+				<span class="desc"></span>
+	    		<div class="controls">
+					<input class="form-control" id="percentage" required [(ngModel)]="model.percentage" name="percentage" #percentage="ngModel" required>
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-9 col-md-8 padding-bottom-30">
+            	<div class="text-left">
+                	<button type="submit" class="btn btn-primary" [disabled]="!discountForm.form.valid">Save</button>
+                    <button type="button" class="btn">Cancel</button>
+                </div>
+            </div>
+        	</div>
+		</form>
 		</div>
-		
-		<button type="submit" class="btn btn-success" [disabled]="!discountForm.form.valid">Save</button>
-	</form>
-</div>
+		</div>
+		</section>
+	</div>
+</section>
+</section>

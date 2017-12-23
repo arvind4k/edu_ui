@@ -119,10 +119,9 @@ body {
     float: left;
     position: relative;
     width: 100%;
-    height: 100%;
+    height: 100%
 }
-
-.boxed {
+body.boxed {
     margin: 0 5% !important;
     max-width: 90%;
     width: 90%;
@@ -133,7 +132,7 @@ body {
     -moz-box-shadow: 0px 0px 5px rgba(86, 96, 117, 0.15);
     -webkit-box-shadow: 0px 0px 5px rgba(86, 96, 117, 0.15);
 }
-.boxed .page-topbar {
+body.boxed .page-topbar {
     max-width: 90%;
     width: 90%;
     margin-left: 5% !important;
@@ -4387,6 +4386,7 @@ a.cke_button_off:hover, .cke_hc a.cke_button_off:focus, .cke_hc a.cke_button_off
     background-color: transparent;
     min-height: 92px;
     width: auto;
+    background-image: url("../images/login-logo.png");
     background-position: center top;
     background-repeat: no-repeat;
     text-indent: -9999px;
@@ -4502,12 +4502,15 @@ a.cke_button_off:hover, .cke_hc a.cke_button_off:focus, .cke_hc a.cke_button_off
 }
 .login_page {
     background-color: #3F51B5;
-    background-image: url('../images/login-bg.png');
+    background-image: url('/assets/images/login-bg.png');
     background-attachment: fixed;
+    /*height: 100%;*/
+    /*max-height: 100%;*/
     min-height: 100%;
+    /*overflow: hidden;*/
     width: 100%;
 }
- .lockscreen {
+ body.lockscreen {
     background-color: #eeeeee;
     background-image: none;
 }
