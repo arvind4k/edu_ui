@@ -16,21 +16,21 @@ export class TransportService {
   	
 	createTransport(transport: Transport): Promise<Transport> {
         return this.http
-          .post("http://localhost:1100/transport", JSON.stringify(transport), { headers: this.headers })
+          .post("http://localhost:9003/transport", JSON.stringify(transport), { headers: this.headers })
           .toPromise()
           .then(res => res.json() as Transport)
           .catch(this.handleError);
 	}
     
     getTransport(transport: Transport):Observable<Transport> {
-        return this.http.get('http://localhost:1100/transport/' + transport.routeId).map(res => res.json()).map((data: Transport) => {
+        return this.http.get('http://localhost:9003/transport/' + transport.routeId).map(res => res.json()).map((data: Transport) => {
         console.log(data);
         return data as Transport;
       });
     }
 
     getTransports():Observable<Array<Transport>> {
-        return this.http.get('http://localhost:1100/transport').map(res => res.json()).map((data: Array<Transport>) => {
+        return this.http.get('http://localhost:9003/transport').map(res => res.json()).map((data: Array<Transport>) => {
         console.log(data);
         return data["_embedded"].transport as Transport[];
       });
