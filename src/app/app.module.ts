@@ -27,12 +27,16 @@ import { LoginComponent } from './login/login.component';
 import { CanActivateAuthGuard } from './login/can-activate.authguard';
 import { MenuComponent } from './home/menu.component';
 import { MainComponent } from './home/main.component';
+
+import { HeaderComponent } from './home/header.component';
+
 import { AddressComponent } from './common/address/address.component';
 import { AddressService } from './common/address/address.service';
 import { EorgComponent } from './profile/eorg/eorg.component';
 import { EorgService } from './profile/eorg/eorg.service';
 import { TransportComponent } from './admin/transport/transport.component';
 import { TransportService } from './admin/transport/transport.service';
+
 
 @NgModule({
   imports: [
@@ -57,6 +61,7 @@ import { TransportService } from './admin/transport/transport.service';
     LoginComponent,
     MenuComponent,
     MainComponent,
+    HeaderComponent,
     AddressComponent,
     TransportComponent,
     EorgComponent

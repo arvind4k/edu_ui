@@ -1,53 +1,114 @@
+<header-app></header-app>
 <menu-app></menu-app>
-<div class="container">
-	<h1>Fee Particulars</h1>
-	
-	<form (ngSubmit)="onSubmit()" #feeParticularForm="ngForm">
-		<div class="form-group">
-			<label for="feeName">Name</label>
-			<input class="form-control" id="name" required [(ngModel)]="model.name" name="name" #name="ngModel">
-			<div [hidden]="name.valid || name.pristine" class="alert alert-danger">
-			  Fee is required
+<section id="main-content" class=" ">
+<section class="wrapper main-wrapper row" style=''>
+    <div class='col-xs-12'>
+        <div class="page-title">
+            <div class="pull-left">
+                <h1 class="title">Fee Particulars</h1><!-- PAGE HEADING TAG - END -->
+            </div>
+            <div class="pull-right hidden-xs">
+                <ol class="breadcrumb">
+                    <li>
+                        <a routerLink="/home" routerLinkActive="active"><i class="fa fa-home"></i>Home</a>
+                    </li>
+                    <li>
+                        <a (click)="backClicked()">Finance</a>
+                    </li>
+                    <li class="active">
+                        <strong>Master Fee Category</strong>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+        <!-- MAIN CONTENT AREA STARTS -->
+    <div class="col-xs-12">
+        <section class="box ">
+        <header class="panel_header">
+        	<h2 class="title pull-left">Create A Fee Particular</h2>
+            <div class="actions panel_actions pull-right">
+                <a class="box_toggle fa fa-chevron-down"></a>
+                <a class="box_setting fa fa-cog" data-toggle="modal" href="#section-settings"></a>
+                <a class="box_close fa fa-times"></a>
+            </div>
+        </header>
+        <div class="content-body">
+        <div class="row">
+		<form (ngSubmit)="onSubmit()" #feeParticularForm="ngForm">
+			<div class="col-md-6">
+			<div class="form-group">
+				<label class="form-label">Name</label>
+                <span class="desc"></span>
+                <div class="controls">
+					<input class="form-control" id="name" required [(ngModel)]="model.name" name="name" #name="ngModel">
+					<div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+				  	Fee is required
+					</div>
+				</div>
 			</div>
-		</div>
 
-		<div class="form-group">
-			<label for="description">Description</label>
-			<textarea class="form-control" id="description" [(ngModel)]="model.description" name="description" #description="ngModel"></textarea>
-		</div>
-		<div class="form-group">
-			<label for="mode">Input As</label><br>
-    		<input class="form-check-input" type="radio" id="inputAs" name="inputAs" value="PaymentPeriod.MONTH" [(ngModel)]="model.inputAs">Monthly &nbsp;&nbsp;
-    		<span *ngIf="model.paymentFrequencyId!='PaymentPeriod.MONTH'">
-    			<input class="form-check-input" type="radio" id="inputAs" name="inputAs" value="{{model.paymentFrequencyId}}" [(ngModel)]="model.inputAs">{{model.paymentFrequencyDesc}}
-    		</span>
-		</div>
-		<div class="form-group">
-			<label for="amount">Amount</label>
-			<input type="text" pattern="[0-9]+" maxlength="10" class="form-control" required id="amount" [(ngModel)]="model.amount" name="amount" #amount="ngModel">
-			<div [hidden]="amount.valid || amount.pristine" class="alert alert-danger">
-			  	Amount is required
+			<div class="form-group">
+				<label class="form-label">Description</label>
+				<span class="desc"></span>
+				<div class="controls">
+					<textarea class="form-control" id="description" [(ngModel)]="model.description" name="description" #description="ngModel"></textarea>
+				</div>
 			</div>
+			<div class="form-group">
+				<label class="form-label">Input As</label><br>
+				<span class="desc"></span>
+				<div class="controls">
+		    		<input class="form-check-input" type="radio" id="inputAs" name="inputAs" value="PaymentPeriod.MONTH" [(ngModel)]="model.inputAs">Monthly &nbsp;&nbsp;
+		    		<span *ngIf="model.paymentFrequencyId!='PaymentPeriod.MONTH'">
+		    			<input class="form-check-input" type="radio" id="inputAs" name="inputAs" value="{{model.paymentFrequencyId}}" [(ngModel)]="model.inputAs">{{model.paymentFrequencyDesc}}
+		    		</span>
+		    	</div>
+			</div>
+			<div class="form-group">
+				<label class="form-label">Amount</label>
+				<span class="desc"></span>
+				<div class="controls">
+					<input type="text" pattern="[0-9]+" maxlength="10" class="form-control" required id="amount" [(ngModel)]="model.amount" name="amount" #amount="ngModel">
+					<div [hidden]="amount.valid || amount.pristine" class="alert alert-danger">
+					  	Amount is required
+					</div>
+				</div>
+			</div>
+			
+			<div class="form-group">
+	    		<label class="form-label">Fee Catrogry</label>
+	    		<span class="desc"></span>
+	    		<div class="controls">
+		    		<select class="form-control" id="feeCategoryId" [(ngModel)]="model.feeCategoryId" name="feeCategoryId" feeCategoryId="ngModel" required (change)="getBatchesByFeeCategoryId()">
+		    			<option [value]="0">Select fee cateogry</option>
+						<option *ngFor="let feeCategory of feeCategories" [value]="feeCategory.feeCategoryId">{{feeCategory.feeName}}</option>
+					</select>
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-9 col-md-8 padding-bottom-30">
+            	<div class="text-left">
+                	<button type="submit" class="btn btn-primary" [disabled]="!feeParticularForm.form.valid">Save</button>
+                    <button type="button" class="btn">Cancel</button>
+                </div>
+            </div>
+           	</div>
+           	<div class="col-md-6">
+			<div class="form-group" *ngIf="batchMappings">
+	    		<label for="options">Select Batch(es)</label>
+	    		<div *ngFor="let batch of batchMappings" let i="index">
+		        	<label>
+		            	<input type="checkbox" value='{{batch.batchName}}' checked="checked" id={{batch.batchId}}>
+		            	{{batch.batchName}}
+		        	</label>
+	    		</div>
+			</div>
+        	</div>
+		</form>
 		</div>
-		
-		<div class="form-group">
-    		<label for="options">Fee Catrogry</label>
-    		<select class="form-control" id="feeCategoryId" [(ngModel)]="model.feeCategoryId" name="feeCategoryId" feeCategoryId="ngModel" required (change)="getBatchesByFeeCategoryId()">
-    			<option [value]="0">Select fee cateogry</option>
-				<option *ngFor="let feeCategory of feeCategories" [value]="feeCategory.feeCategoryId">{{feeCategory.feeName}}</option>
-			</select>
 		</div>
-
-		<div class="form-group" *ngIf="batchMappings">
-    		<label for="options">Select Batch(es)</label>
-    		<div *ngFor="let batch of batchMappings" let i="index">
-	        	<label>
-	            	<input type="checkbox" value='{{batch.batchName}}' checked="checked" id={{batch.batchId}}>
-	            	{{batch.batchName}}
-	        	</label>
-    		</div>
-		</div>
-
-		<button type="submit" class="btn btn-success" [disabled]="!feeParticularForm.form.valid">Save</button>
-	</form>
-</div>
+		</section>
+	</div>
+</section>
+</section>

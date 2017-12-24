@@ -1,99 +1,160 @@
+<header-app></header-app>
 <menu-app></menu-app>
-<div class="container">
-	
-	<h1>Fee View</h1>
-    <a (click)="backToFeeList()">Back To Fee Categories</a>
+<section id="main-content" class=" ">
+<section class="wrapper main-wrapper row" style=''>
+    <div class='col-xs-12'>
+    <div class="page-title">
+    <div class="pull-left">
+        <h1 class="title">Fee View</h1>
+    </div>
+    <div class="pull-right hidden-xs">
+        <ol class="breadcrumb">
+            <li>
+                <a href="index.html"><i class="fa fa-home"></i>Home</a>
+            </li>
+            <li>
+                <a href="ui-invoice.html">Finance</a>
+            </li>
+            <li class="active">
+                <strong>Fee View</strong>
+            </li>
+        </ol>
+    </div>
+    </div>
+    </div>
+    <div class="clearfix"></div>
+    <!-- MAIN CONTENT AREA STARTS -->
+    
+    <div class="col-lg-12">
+        <section class="box ">
+            <header class="panel_header">
+                <h2 class="title pull-left">Invoice</h2>
+                <div class="actions panel_actions pull-right">
+                    <a class="box_toggle fa fa-chevron-down"></a>
+                    <a class="box_setting fa fa-cog" data-toggle="modal" href="#section-settings"></a>
+                    <a class="box_close fa fa-times"></a>
+                </div>
+            </header>
+            <div class="content-body">    
+            <div class="row">
+            <div class="col-xs-12">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="invoice-head row">
+                        <div class="col-xs-12 col-md-2 invoice-title">
+                            <h2 class="text-center bg-primary ">Fee View</h2>    
+                        </div>
+                        <div class="col-xs-12 col-md-3 invoice-head-info">
+                            <span class='text-muted'>
+                                Fee Name<br>
+                                {{feeCategory.feeName}}
+                            </span>
+                        </div>
+                        <div class="col-xs-12 col-md-3 invoice-head-info">
+                            <span class='text-muted'>Fee Period<br>
+                            {{feeCategory.startDate| date:'MMM yyyy'}} - {{feeCategory.endDate| date:'MMM yyyy'}}</span>
+                        </div>
+                        <div class="col-xs-12 col-md-3 invoice-head-info">
+                            <span class='text-muted'>
+                                Due Date<br>
+                                {{feeCategory.dueDate}} of the month
+                            </span>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div><br>
+                </div>
+                
 
-		<table width="100%">
-            <tr>
-                <td width="10%">
-                    <b>Fee:</b>
-                </td>
-                <td widht="30%">
-                    {{feeCategory.feeName}}
-                </td>
-                <td width="35%" style="text-align:right;">
-                    <b>Period:&nbsp;</b>
-                </td>
-                <td widht="30%" style="text-align:left;">
-                    {{feeCategory.startDate| date:'MMM yyyy'}} - {{feeCategory.endDate| date:'MMM yyyy'}}
-                </td>
-            </tr>
-            <tr>
-                <td widht="10%">
-                    <b>Batch:</b>
-                </td>
-                <td width="30%">
-                    {{feeParticulars[0].batchName}}
-                </td>
-                <td width="45%" style="text-align:right;">
-                    <b>Frequency:&nbsp;</b>
-                </td>
-                <td widht="20%" style="text-align:left;">
-                    {{paymentFrequency.description}}
-                </td>
-            </tr>
-            <tr>
-                <td widht="10%">
-                    <b>Due Date:</b>
-                </td>
-                <td width="28   %">
-                    {{feeCategory.dueDate}} of the month
-                </td>
-                <td width="45%" style="text-align:right;">&nbsp;
-                </td>
-                <td widht="20%" style="text-align:left;">&nbsp;
-                </td>
-            </tr>
-        </table>
-        <table *ngIf="feeParticulars" id="feeParticulars" class="table table-striped table-bordered" cellspacing="0" width="100%">
-        <thead>
-            <tr>
-                <th colspan="4" style="text-align: center;">Fee Details</th>
-            </tr>
-            <tr>
-                <th>#</th>
-                <th>Fee Particular</th>
-                <th style="text-align: right;">Unit Price</th>
-                <th style="text-align: right;">Amount</th>
-            </tr>
-        </thead>
-        <tfoot>
-        </tfoot>
-        <tbody>
-            <tr *ngFor="let feeParticular of feeParticulars, let i=index">
-                <td>{{i+1}}</td>
-                <td>{{feeParticular.name}}</td>
-                <td style="text-align: right;">{{feeParticular.amount}}</td>
-                <td style="text-align: right;" *ngIf="feeParticular.inputAs=='PaymentPeriod.MONTH'">{{feeParticular.amount * paymentFrequency.numberOfMonths}}</td>
-                <td style="text-align: right;" *ngIf="feeParticular.inputAs!='PaymentPeriod.MONTH'">{{feeParticular.amount}}</td>
-            </tr>
-            <tr>
-                <th colspan="3" style="text-align: right;">Total Payable</th>
-                <th style="text-align: right;">{{getTotal()|currency:'INR':true}}</th>
-            </tr>
-        </tbody>
-        
-        <thead>
-            <tr>
-                <th colspan="4" style="text-align: center;">Applicable Discounts</th>
-            </tr>
-            
-            <tr>
-                <th>#</th>
-                <th>Discount</th>
-                <th>Category</th>
-                <th style="text-align: right;">Amount/Percentage</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let discount of discounts, let i=index">
-                <td>{{i+1}}</td>
-                <td>{{discount.discountName}}</td>
-                <td>{{discount.discountCategoryName}}</td>
-                <td style="text-align: right;" *ngIf="discount.discountMode=='Amount'">{{discount.amount|currency:'INR':true}}</td>
-                <td style="text-align: right;" *ngIf="discount.discountMode=='Percentage'">{{discount.percentage}}%</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+                <div class="col-xs-6 invoice-infoblock pull-left">
+                    <h4>Billed To:</h4>
+                    <!-- <h3>John Smith</h3>
+                    <address>
+                    <span class='text-muted'>1234 Main Street<br>Apt. 34/4B<br>
+                        Springfield<br>ST 54321</span>
+                    </address> -->
+                </div>
+
+                <div class="col-xs-6 invoice-infoblock text-right">
+                    <h4>Payment Frequency:</h4>
+                        <h3>{{paymentFrequency.description}}</h3>
+                    <address>
+                        <span class='text-muted'>Batch<br>
+                            {{feeParticulars[0].batchName}}
+                        </span>
+                    </address>
+                    <div class="invoice-due">
+                        <h3 class="text-muted">Total Fee Amount:</h3> &nbsp; 
+                        <h2 class="text-primary">{{getTotal()|currency:'INR':true}}</h2>
+                    </div>
+                <div class="clearfix"></div><br>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <h3>Fee summary</h3><br>
+                    <div class="table-responsive">
+                        <table class="table table-hover invoice-table">
+                            <thead>
+                                <tr>
+                                    <td><h4>#</h4></td>
+                                    <td class="text-center"><h4>Fee Particular</h4></td>
+                                    <td class="text-right"><h4>Unit Price</h4></td>
+                                    <td class="text-right"><h4>Amount</h4></td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let feeParticular of feeParticulars, let i=index">
+                                    <td>{{i+1}}</td>
+                                    <td class="text-center">{{feeParticular.name}}</td>
+                                    <td class="text-right">{{feeParticular.amount}}</td>
+                                    <td class="text-right" *ngIf="feeParticular.inputAs=='PaymentPeriod.MONTH'">{{feeParticular.amount * paymentFrequency.numberOfMonths}}</td>
+                                    <td  class="text-right"*ngIf="feeParticular.inputAs!='PaymentPeriod.MONTH'">{{feeParticular.amount}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table class="table table-hover invoice-table">
+                            <thead>
+                                <tr>
+                                    <td colspan="4"><h4>Applicable Discount(s)</h4></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center">#</td>
+                                    <td class="text-center">Discount</td>
+                                    <td class="text-center">Category</td>
+                                    <td class="text-center">Amount/Percentage</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let discount of discounts, let i=index">
+                                    <td class="text-center">{{i+1}}</td>
+                                    <td class="text-center">{{discount.discountName}}</td>
+                                    <td class="text-center">{{discount.discountCategoryName}}</td>
+                                    <td class="text-right" *ngIf="discount.discountMode=='Amount'">{{discount.amount|currency:'INR':true}}</td>
+                                    <td class="text-right" *ngIf="discount.discountMode=='Percentage'">{{discount.percentage}}%</td>
+                                </tr>
+                                <tr>
+                                    <td class="thick-line"></td>
+                                    <td class="thick-line"></td>
+                                    <td class="thick-line text-center"><h4>Total</h4></td>
+                                    <td class="thick-line text-right"><h4>{{getTotal()|currency:'INR':true}}</h4></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="clearfix"></div><br>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <a href="#" target="_blank" class="btn btn-purple btn-md"><i class="fa fa-print"></i> &nbsp; Print </a>        
+                    <a href="#" target="_blank" class="btn btn-accent btn-md"><i class="fa fa-send"></i> &nbsp; Send </a>        
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+    </section>
+    </div>
+</section>
+</section>
