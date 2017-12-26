@@ -7,6 +7,7 @@ import { DatePipe } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent }  from './home/home.component';
 import { ProfileComponent }  from './profile/user/profile.component';
+import { UserComponent }  from './profile/user/user.component';
 import { FeeCategoryComponent }  from './finance/fee.category.component';
 import { FeeParticularComponent }  from './finance/fee.particular.component';
 import { FeeListComponent }  from './finance/fee.list.component';
@@ -48,6 +49,7 @@ import { TransportService } from './admin/transport/transport.service';
   declarations: [
     HomeComponent,
     ProfileComponent,
+    UserComponent,
     FeeCategoryComponent,
     FeeParticularComponent,
     FeeListComponent,

@@ -6,14 +6,13 @@ import { Address } from '../../common/address/address.model';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'user-app',
-  templateUrl: './user.view.html'
+  selector: 'profile-app',
+  templateUrl: './profile.view.html'
 })
 
 export class ProfileComponent {
   message = '';
   model = new Profile();
-  //errorMsg: string;
   action: Action;
   submitted = false;
   address:Address;

@@ -60,7 +60,6 @@ export class FeeParticularComponent {
         await this.feeService.getFeeCategoryById(this.model.feeCategoryId).subscribe((data: FeeCategory) => {
             this.feeCategory = data;
             this.getPaymentFrequency(data.paymentFrequencyId);
-            console.log('frequency=============='+this.paymentFrequency);
         });
     }
 

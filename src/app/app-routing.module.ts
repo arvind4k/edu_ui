@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 //import { UserComponent }   from './user/user.component';
 import { HomeComponent }   from './home/home.component';
 import { ProfileComponent }   from './profile/user/profile.component';
+import { UserComponent }   from './profile/user/user.component';
 import { FeeCategoryComponent }   from './finance/fee.category.component';
 import { FeeParticularComponent }   from './finance/fee.particular.component';
 import { FeeListComponent }   from './finance/fee.list.component';
@@ -23,7 +24,7 @@ import { CanActivateAuthGuard } from './login/can-activate.authguard';
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [CanActivateAuthGuard] },
   { path: 'home',  component: HomeComponent, canActivate: [CanActivateAuthGuard] },
-  //{ path: 'signup', component: UserComponent, canActivate: [CanActivateAuthGuard] },
+  { path: 'signup', component: UserComponent},
   { path: 'feeCategory/:feeId', component: FeeCategoryComponent , canActivate: [CanActivateAuthGuard]},
   { path: 'feeParticular/:feeId', component: FeeParticularComponent , canActivate: [CanActivateAuthGuard]},
   { path: 'feeParticular/edit/:particualrId', component: FeeParticularComponent , canActivate: [CanActivateAuthGuard]},
