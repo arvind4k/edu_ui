@@ -6,7 +6,7 @@ import { DatePipe } from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent }  from './home/home.component';
-import { UserComponent }  from './profile/user/user.component';
+import { ProfileComponent }  from './profile/user/profile.component';
 import { FeeCategoryComponent }  from './finance/fee.category.component';
 import { FeeParticularComponent }  from './finance/fee.particular.component';
 import { FeeListComponent }  from './finance/fee.list.component';
@@ -17,7 +17,7 @@ import { DiscountComponent } from './finance/discount/discount.component';
 import { DiscountCategoryListComponent } from './finance/discount/disCategory.list.component';
 import { DiscountListComponent } from './finance/discount/discount.list.component';
 
-import { UserService } from './profile/user/user.service';
+import { ProfileService } from './profile/user/profile.service';
 import { FeeService } from './finance/fee.service';
 import { AuthenticationService } from './login/authentication.service'
 import { CommonService } from './common/common.service';
@@ -47,7 +47,7 @@ import { TransportService } from './admin/transport/transport.service';
   ],
   declarations: [
     HomeComponent,
-    UserComponent,
+    ProfileComponent,
     FeeCategoryComponent,
     FeeParticularComponent,
     FeeListComponent,
@@ -66,7 +66,7 @@ import { TransportService } from './admin/transport/transport.service';
     TransportComponent,
     EorgComponent
   ],
-  providers:[ UserService, FeeService, CommonService, DiscountService, DatePipe, 
+  providers:[ ProfileService, FeeService, CommonService, DiscountService, DatePipe, 
               AuthenticationService, CanActivateAuthGuard, AddressService, TransportService, EorgService],
   
   bootstrap: [ MainComponent ]

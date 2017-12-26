@@ -50,7 +50,6 @@ export class FeeListComponent {
     }
 
     redirectToFeeCategory(feeId:string){
-        console.log('feeId================'+feeId);
         this.router.navigate(['/feeCategory',feeId]);
     }
 

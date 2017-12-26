@@ -37,13 +37,10 @@ export class FineComponent {
     getFineById() {
         this.feeService.getFineById(this.model.fineId).subscribe((data: Fine) => {
         this.model = data;
-        console.log(this.model);
         });
     }
     async onSubmit() {
-        console.log(JSON.stringify(this.model));
         await this.feeService.saveFine(this.model).then(result => this.model=result); 
         this.submitted = true; 
-        console.log("fine id =======",this.model.fineId);
     }
 }

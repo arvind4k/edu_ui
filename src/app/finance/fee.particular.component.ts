@@ -87,6 +87,7 @@ export class FeeParticularComponent {
             feeParticular.description=this.model.description;
             feeParticular.name=this.model.name;
             feeParticular.particularId=this.model.particularId;
+            feeParticular.inputAs=this.model.inputAs;
             feeParticular.batchId=val;
             feeParticular.batchName=(<HTMLInputElement>document.getElementById(val)).value;
             this.feeParticulars.push(feeParticular);
@@ -122,5 +123,6 @@ export class FeeParticularComponent {
        this.model.batchName=null;
        this.model.batchId=null;
        this.model.particularId=null;
+       this.feeParticulars.length=0;
    }
 }

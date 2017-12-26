@@ -21,8 +21,6 @@ import { TransportComponent } from './admin/transport/transport.component';
 import { CanActivateAuthGuard } from './login/can-activate.authguard';
 
 const routes: Routes = [
-  //{ path: '', component: HomeComponent, canActivate: [CanActivateAuthGuard] },
-  { path: '',  component: HomeComponent, canActivate: [CanActivateAuthGuard] },
   { path: '', component: HomeComponent, canActivate: [CanActivateAuthGuard] },
   { path: 'home',  component: HomeComponent, canActivate: [CanActivateAuthGuard] },
   { path: 'signup', component: UserComponent, canActivate: [CanActivateAuthGuard] },
