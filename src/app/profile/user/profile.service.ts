@@ -17,15 +17,15 @@ export class ProfileService {
   	
 	createUser(user: Profile): Promise<Profile> {
         return this.http
-          .post("http://localhost:1900/user", JSON.stringify(user), { headers: this.headers })
+          .post("http://localhost:9004/users", JSON.stringify(user), { headers: this.headers })
           .toPromise()
           .then(res => res.json() as Profile)
           .catch(this.handleError);
 	}
     
-    getUser(user: Profile):Observable<Profile> {
-        return this.http.get('http://localhost:1900/user/' + user.userId).map(res => res.json()).map((data: Profile) => {
-        console.log(data);
+
+  getUser(user: Profile):Observable<Profile> {
+    return this.http.get('http://localhost:1900/user/' + user.userId).map(res => res.json()).map((data: Profile) => {
         return data as Profile;
       });
     }

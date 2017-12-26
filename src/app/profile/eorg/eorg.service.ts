@@ -18,21 +18,21 @@ export class EorgService {
   	
 	createEorg(entity: Eorg): Promise<Eorg> {
         return this.http
-          .post("http://localhost:1901/eorg", JSON.stringify(entity), { headers: this.headers })
+          .post("http://localhost:9004/eorg", JSON.stringify(entity), { headers: this.headers })
           .toPromise()
           .then(res => res.json() as Eorg)
           .catch(this.handleError);
 	}
     
     getEorg(entity: Eorg):Observable<Eorg> {
-        return this.http.get('http://localhost:1901/eorg/' + entity.entityId).map(res => res.json()).map((data: Eorg) => {
+        return this.http.get('http://localhost:9004/eorg/' + entity.entityId).map(res => res.json()).map((data: Eorg) => {
         console.log(data);
         return data as Eorg;
       });
     }
 
     getEorgs():Observable<Array<Eorg>> {
-        return this.http.get('http://localhost:1901/eorg').map(res => res.json()).map((data: Array<Eorg>) => {
+        return this.http.get('http://localhost:9004/eorg').map(res => res.json()).map((data: Array<Eorg>) => {
         console.log(data);
         return data["_embedded"].eorg as Eorg[];
       });
