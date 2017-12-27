@@ -1,0 +1,101 @@
+
+
+
+<header-app></header-app>
+<menu-app></menu-app>
+<section id="main-content" class=" ">
+<section class="wrapper main-wrapper row" style=''>
+    <div class='col-xs-12'>
+        <div class="page-title">
+            <div class="pull-left">
+                <h1 class="title">Fine</h1><!-- PAGE HEADING TAG - END -->
+            </div>
+            <div class="pull-right hidden-xs">
+                <ol class="breadcrumb">
+                    <li>
+                        <a routerLink="/home" routerLinkActive="active"><i class="fa fa-home"></i>Home</a>
+                    </li>
+                    <li>
+                        <a (click)="backClicked()">Finance</a>
+                    </li>
+                    <li class="active">
+                        <strong>Create Fine</strong>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+        <!-- MAIN CONTENT AREA STARTS -->
+    <div class="col-xs-12">
+        <section class="box ">
+        <header class="panel_header">
+            <h2 class="title pull-left"> User Module</h2>
+            <div class="actions panel_actions pull-right">
+                <a class="box_toggle fa fa-chevron-down"></a>
+                <a class="box_setting fa fa-cog" data-toggle="modal" href="#section-settings"></a>
+                <a class="box_close fa fa-times"></a>
+            </div>
+        </header>
+        <div class="content-body">
+        <div class="row">
+
+	<!-- Below block of code generation Action options on web page -->
+	<form (ngSubmit)="onSubmitGet()" #userForm="ngForm">
+		<b>{{message}}</b>
+		<br>
+		<input name="action"  [(ngModel)]="action.method" type="radio" (ngModelChange)="onSelectNonCreate()" value="Update" /> Update
+		<input name="action" [(ngModel)]="action.method" type="radio" (ngModelChange)="onSelectNonCreate()" value="View" /> View
+		<input name="action" [(ngModel)]="action.method" type="radio" (ngModelChange)="onSelectCreate()" value="Create" /> Create
+		<input name="action" [(ngModel)]="action.method" type="radio" (ngModelChange)="onSelectNonCreate()" value="Delete" /> Delete
+	</form>
+	
+	<!-- Below code show USer ID field only if operation involving seraching of user ID. Like Update/Vide/Delete need search -->
+	<form (ngSubmit)="onSubmit()" #userForm="ngForm"  >
+		
+		<div class="form-group" *ngIf="action.method == 'Update' || action.method == 'View' || action.method == 'Delete'">
+			<label for="userId"  >User ID</label>
+			<input type="text"  (keyup)="onActionGet()" size=20 class="form-control" id="userId" required [(ngModel)]="model.userId" name="userId" #userId="ngModel">
+		</div>
+
+		<br>
+	
+		<!-- Below fieldset is written from the perspective that all field can be disabled/enabled/visible/hidden in one go -->
+		<fieldset class="form-group"  *ngIf="action.method == 'Create' || action.submethod == 'View'" [disabled]="action.method == 'View' || action.method == 'Delete'"> 
+	
+	<!-- Below code has all data fields on form -->
+		<div >
+			<label for="firstName" >First Name</label>
+			<input type="text" size=20 class="form-control"  id="firstName" required [(ngModel)]="model.firstName" name="firstName" #firstName="ngModel">
+			
+			<label for="middleName">Middle Name</label>
+			<input type="text" size=20 class="form-control" id="middleName" required [(ngModel)]="model.middleName" name="middleName" #lastName="ngModel">
+
+			<label for="lastName">Last Name</label>
+			<input type="text" size=20 class="form-control" id="lastName" required [(ngModel)]="model.lastName" name="lastName" #lastName="ngModel">
+			
+			<label for="emailId">Email Id / Username</label>
+			<input type="text" class="form-control" id="username" required [(ngModel)]="model.username" name="username" #username="ngModel">
+			
+			<label for="dob">Date of Birth</label>
+			<input type="text" class="form-control" id="dob" required [(ngModel)]="model.dob" name="dob" #dob="ngModel">
+		</div>	
+		
+		<div class="form-group">
+			<address-app *ngFor="let address1 of addresses" [model]="address1" >Loading...</address-app>
+			<label for="address">Another Address</label>
+			<button type=button (click)="onSelectCreate()">+</button>
+		</div>
+		<br>
+	</fieldset>
+	<!-- Button is outside of fieldset tag so that it can be enabled/disabled as needed -->
+	<button type="submit" *ngIf="(((action.method == 'Update' || action.method == 'Delete') && action.submethod == 'View' ) || action.method == 'Create') " class="btn btn-success" >Perform Action</button>
+	
+	</form>
+</div>
+</div>
+</section>
+</div>
+</section>
+</section>
+

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { Profile } from './user.model';
+import { Profile, User } from './user.model';
 import { Observable }     from 'rxjs/Observable';
 
 import { RequestOptions, Headers, Http } from '@angular/http';
@@ -15,12 +15,12 @@ export class ProfileService {
 
 	constructor(private http: Http) { }
   	
-	createUser(user: Profile): Promise<Profile> {
+	createUser(user: User): Promise<any> {
         return this.http
-          .post("http://localhost:9004/users", JSON.stringify(user), { headers: this.headers })
+          .post("http://localhost:9004/users/sign-up", JSON.stringify(user), { headers: this.headers })
           .toPromise()
-          .then(res => res.json() as Profile)
-          .catch(this.handleError);
+          .then(res => res.json() as User)
+          .catch(this.handleError);  
 	}
     
 

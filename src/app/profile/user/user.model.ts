@@ -2,9 +2,11 @@ export class User {
     public userId: string;
     public username: string;
     public firstName:string;
+    public middleName:string;
     public lastName: string;
     public email: string;
     public password: string;
+    public termsAndCondition:string;
     public obsolete: string;
 }
 
