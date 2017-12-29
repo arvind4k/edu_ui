@@ -40,14 +40,15 @@
         <div class="row">
 
 <b>{{message}}</b>
-<br>
-	<!-- Below block of code generation Action options on web page -->		
+	<!-- Below block of code generation Action options on web page -->	
+<!--	
 	<input name="action"  [(ngModel)]="action.method" type="radio" (ngModelChange)="onSelectNonCreate()" value="Update" /> Update
 	<input name="action" [(ngModel)]="action.method" type="radio" (ngModelChange)="onSelectNonCreate()" value="View" /> View
 	<input name="action" [(ngModel)]="action.method" type="radio" (ngModelChange)="onSelectCreate()" value="Create" /> Create
 	<input name="action" [(ngModel)]="action.method" type="radio" (ngModelChange)="onSelectNonCreate()" value="Delete" /> Delete
 
-	
+-->
+
 	<!-- Below code show USer ID field only if operation involving seraching of user ID. Like Update/Vide/Delete need search -->
 	 <form (ngSubmit)="createEntity()" #userForm="ngForm"  > 
 		

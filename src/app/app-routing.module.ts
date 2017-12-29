@@ -37,7 +37,9 @@ const routes: Routes = [
   { path: 'discount', component: DiscountListComponent, canActivate: [CanActivateAuthGuard]},
   { path: 'fine', component: FineComponent , canActivate: [CanActivateAuthGuard]},
   { path: 'transport', component: TransportComponent , canActivate: [CanActivateAuthGuard]},
+  { path: 'transport/:action', component: TransportComponent , canActivate: [CanActivateAuthGuard]},
   { path: 'eorg', component: EorgComponent , canActivate: [CanActivateAuthGuard]},
+  { path: 'eorg/:action', component: EorgComponent , canActivate: [CanActivateAuthGuard]},
   { path: 'profile', component: ProfileComponent, canActivate: [CanActivateAuthGuard]},
   { path: 'login', component: LoginComponent}
 ];

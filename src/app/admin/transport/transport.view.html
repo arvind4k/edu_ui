@@ -6,7 +6,7 @@
     <div class='col-xs-12'>
         <div class="page-title">
             <div class="pull-left">
-                <h1 class="title">Fine</h1><!-- PAGE HEADING TAG - END -->
+                <h1 class="title">Transport</h1><!-- PAGE HEADING TAG - END -->
             </div>
             <div class="pull-right hidden-xs">
                 <ol class="breadcrumb">
@@ -14,10 +14,10 @@
                         <a routerLink="/home" routerLinkActive="active"><i class="fa fa-home"></i>Home</a>
                     </li>
                     <li>
-                        <a (click)="backClicked()">Finance</a>
+                        <a (click)="backClicked()">Transport</a>
                     </li>
                     <li class="active">
-                        <strong>Create Fine</strong>
+                        <strong>Operation</strong>
                     </li>
                 </ol>
             </div>
@@ -37,7 +37,7 @@
         </header>
         <div class="content-body">
         <div class="row">
-
+<!--
 <form (ngSubmit)="onSubmitGet()" #userForm="ngForm">
 		
 		<br>
@@ -47,12 +47,13 @@
 		<input name="action" [(ngModel)]="action.method" type="radio" value="Create" /> Create
 		
 	</form>
+-->
 </div>
 
 
-<div class="container" *ngIf="action.method == 'View'">
+<div  *ngIf="action.method == 'View'">
 	<label for="routeName">Select Route</label>
-	<select class="form-control" id="count" [(ngModel)]="count" name="count" (ngModelChange)="onSelectRoute()" routeId="ngModel">
+	<select  id="count" [(ngModel)]="count" name="count" (ngModelChange)="onSelectRoute()" routeId="ngModel">
 		<option *ngFor="let transport of transports; index as i;" [value]="i">{{transport.routeName}}</option>
 	</select>
 </div>
@@ -66,12 +67,12 @@
 		<input #routeName type="text" class="form-control"  id="routeName"  name="routeName" [(ngModel)]="transport.routeName" #routeName="ngModel">
 	</div>
 	<label for="stopName" >Stop Name</label>
-	<input #stopName type="text" size=20 class="form-control"  id="stopName"  name="stopName" [(ngModel)]="formModel.stopName" #stopName="ngModel">
+	<input #stopName type="text"  class="form-control"  id="stopName"  name="stopName" [(ngModel)]="formModel.stopName" #stopName="ngModel">
 	
 
 	
-	<label for="stopCost" >Please enter Fee for this Transport route... </label>
-	<input #stopCost type="text" size=20 class="form-control"  id="stopCost" name="stopCost" [(ngModel)]="formModel.stopCost" #stopCost="ngModel">
+	<label for="stopCost" >Fee  </label>
+	<input #stopCost type="text"  class="form-control"  id="stopCost" name="stopCost" [(ngModel)]="formModel.stopCost" #stopCost="ngModel">
 	
 	
 
@@ -82,23 +83,26 @@
 	<br><br>
 
 <div  *ngIf="count > 1 || action.method == 'View'">
-	<table>
-		<b>
-			<tr><td>Route Name : {{transport.routeName}} </td></tr>
+	<table class="table table-bordered">
+		
+			<tr><td style="text-align: left;"> Route Name : {{transport.routeName}} </td></tr>
+	</table>
+	<table class="table table-bordered">
 			<tr>
 			
-				<td>S. No.</td>
-				<td>Stop Name</td>
-				<td>Cost for this Stop</td>
-				<td>is Stop Active?</td>
+				<td style="text-align: Center;">S. No.</td>
+				<td style="text-align: Center;">Stop Name</td>
+				<td style="text-align: Center;">Cost for this Stop</td>
+				<td style="text-align: Center;">is Stop Active?</td>
+				<td style="text-align: Center;">Action</td>
 			</tr>
-		</b>
+		
 		<tr *ngFor="let route of routes">
-			<td>{{route.stopNumber}}</td>
-			<td>{{route.stopName}}</td>
-			<td>{{route.stopCost}}</td>
-			<td>{{route.obsolete}}</td>
-			<td><button (click)="actionEdit(route.stopNumber,route.stopName,route.stopCost)">Edit</button></td>
+			<td style="text-align: Center;">{{route.stopNumber}}</td>
+			<td style="text-align: Center;">{{route.stopName}}</td>
+			<td style="text-align: Center;">{{route.stopCost}}</td>
+			<td style="text-align: Center;">{{route.obsolete}}</td>
+			<td style="text-align: Center;"><button (click)="actionEdit(route.stopNumber,route.stopName,route.stopCost)">Edit</button></td>
 		</tr>
 		
 	  </table>

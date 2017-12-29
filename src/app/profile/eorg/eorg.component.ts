@@ -3,7 +3,7 @@ import { Eorg, Action} from './eorg.model';
 import { EorgService } from './eorg.service';
 import {AddressService} from '../../common/address/address.service';
 import { Address } from '../../common/address/address.model';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'eorg-app',
@@ -23,9 +23,13 @@ export class EorgComponent {
   //addresses: Array<Address>;
   submitted = false;
 
-  constructor(private eorgService: EorgService, private addressService: AddressService, private router: Router) { }
+  constructor(private eorgService: EorgService, private addressService: AddressService, private router: Router, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void { 
+    let type = this.activatedRoute.snapshot.paramMap.get('action');
+    console.log("Action");
+    console.log(type);
+    this.action.method = type;
   }
 
   //this method will be called when Org type is selected and it will be selected only when new recording is being Created

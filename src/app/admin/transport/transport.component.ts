@@ -1,7 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { Transport, TransportParticulars, Action} from './transport.model';
 import { TransportService } from './transport.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+//import { ActivatedRoute } from '@angular/router/src/router_state';
 
 
 @Component({
@@ -22,8 +23,13 @@ export class TransportComponent {
   action: Action;
 
 
-  constructor(private transportService: TransportService, private router: Router) { }
+  constructor(private transportService: TransportService, private router: Router, private activatedRoute: ActivatedRoute) {  
+  
+  }
   ngOnInit(): void {
+    let type = this.activatedRoute.snapshot.paramMap.get('action');
+    console.log("Action");
+    console.log(type);
 
     this.routes = new Array<TransportParticulars>();
     this.formModel = new TransportParticulars();
@@ -33,7 +39,7 @@ export class TransportComponent {
     this.count = 1;
     this.editArrayPosition = 0;
     this.action = new Action();
-    //this.action.method = "Add";
+    this.action.method = type;
   }
   
   addRoute(stopName: string, stopCost: string){
