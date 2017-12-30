@@ -18,6 +18,8 @@ import { FineComponent } from './finance/fine.component';
 import { LoginComponent } from './login/login.component';
 import { EorgComponent } from './profile/eorg/eorg.component';
 import { TransportComponent } from './admin/transport/transport.component';
+import { DepartmentComponent } from './admin/department/department.component';
+import { CourseComponent } from './admin/course/course.component';
 
 import { CanActivateAuthGuard } from './login/can-activate.authguard';
 
@@ -38,6 +40,10 @@ const routes: Routes = [
   { path: 'fine', component: FineComponent , canActivate: [CanActivateAuthGuard]},
   { path: 'transport', component: TransportComponent , canActivate: [CanActivateAuthGuard]},
   { path: 'transport/:action', component: TransportComponent , canActivate: [CanActivateAuthGuard]},
+  { path: 'department', component: DepartmentComponent , canActivate: [CanActivateAuthGuard]},
+  { path: 'department/:action', component: DepartmentComponent , canActivate: [CanActivateAuthGuard]},
+  { path: 'course', component: CourseComponent , canActivate: [CanActivateAuthGuard]},
+  { path: 'course/:action', component: CourseComponent , canActivate: [CanActivateAuthGuard]},
   { path: 'eorg', component: EorgComponent , canActivate: [CanActivateAuthGuard]},
   { path: 'eorg/:action', component: EorgComponent , canActivate: [CanActivateAuthGuard]},
   { path: 'profile', component: ProfileComponent, canActivate: [CanActivateAuthGuard]},

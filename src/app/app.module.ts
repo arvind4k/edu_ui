@@ -37,6 +37,10 @@ import { EorgComponent } from './profile/eorg/eorg.component';
 import { EorgService } from './profile/eorg/eorg.service';
 import { TransportComponent } from './admin/transport/transport.component';
 import { TransportService } from './admin/transport/transport.service';
+import { DepartmentComponent } from './admin/department/department.component';
+import { DepartmentService } from './admin/department/department.service';
+import { CourseComponent } from './admin/course/course.component';
+import { CourseService } from './admin/course/course.service';
 
 
 @NgModule({
@@ -66,10 +70,12 @@ import { TransportService } from './admin/transport/transport.service';
     HeaderComponent,
     AddressComponent,
     TransportComponent,
+    DepartmentComponent,
+    CourseComponent,
     EorgComponent
   ],
   providers:[ ProfileService, FeeService, CommonService, DiscountService, DatePipe, 
-              AuthenticationService, CanActivateAuthGuard, AddressService, TransportService, EorgService],
+              AuthenticationService, CanActivateAuthGuard, AddressService, TransportService, DepartmentService, CourseService, EorgService],
   
   bootstrap: [ MainComponent ]
 })
