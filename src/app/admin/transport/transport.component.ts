@@ -40,6 +40,9 @@ export class TransportComponent {
     this.editArrayPosition = 0;
     this.action = new Action();
     this.action.method = type;
+    if (this.action.method == "View") {
+      this.getRoutes();
+    }
   }
   
   addRoute(stopName: string, stopCost: string){
@@ -78,12 +81,13 @@ export class TransportComponent {
 
   async onSubmit(){
     this.transport.obsolete = '0';
+    this.transport.entityId = 25;
     this.transport.transportParticulars = this.routes;
     console.log(JSON.stringify(this.transport));
     await this.transportService.createTransport(this.transport).then(result => this.transport=result); 
   }
   getRoutes(){
-    this.transportService.getTransports().subscribe((data: Array<Transport>) => {
+    this.transportService.getTransports(25).subscribe((data: Array<Transport>) => {
       this.transports = data;
       });
   }

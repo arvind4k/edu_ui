@@ -3,7 +3,7 @@ export class Transport {
     public routeName: string;
     public transportMode: string;
     public obsolete: string;
-    public entity_id: number;
+    public entityId: number;
     public transportParticulars: Array<TransportParticulars>;
 }
 

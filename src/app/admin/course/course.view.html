@@ -6,7 +6,7 @@
     <div class='col-xs-12'>
         <div class="page-title">
             <div class="pull-left">
-                <h1 class="title">Course</h1><!-- PAGE HEADING TAG - END -->
+                <h1 class="title">Courses</h1><!-- PAGE HEADING TAG - END -->
             </div>
             <div class="pull-right hidden-xs">
                 <ol class="breadcrumb">
@@ -28,7 +28,7 @@
     <div class="col-xs-12">
         <section class="box ">
         <header class="panel_header">
-            <h2 class="title pull-left"> Course Module</h2>
+            <h2 class="title pull-left"> Mihir Bhoj Degree College</h2>
             <div class="actions panel_actions pull-right">
                 <a class="box_toggle fa fa-chevron-down"></a>
                 <a class="box_setting fa fa-cog" data-toggle="modal" href="#section-settings"></a>
@@ -42,7 +42,9 @@
 
 <div  >
 	<label for="sessionId">Select Session</label>
-	
+	<select  id="sessionId" [(ngModel)]="sessions" name="sessions" (ngModelChange)="onSelectRoute()" sessionId="ngModel">
+		<option *ngFor="let session of sessions; index as i;" [value]="session.sessionId">{{session.sessionName}}</option>
+	</select>
 </div>
 
 <div  *ngIf="action.method == 'View'">

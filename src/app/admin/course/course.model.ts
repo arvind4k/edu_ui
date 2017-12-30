@@ -15,6 +15,10 @@ export class  CourseParticulars{
     
 }
 
+export class  Session{
+    public sessionId: string;
+    public sessionName: string;
+}
 export class Action {
     public method: string;
     public submethod: string;

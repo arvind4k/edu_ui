@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { Course, CourseParticulars, Action} from './course.model';
+import { Course, CourseParticulars, Session, Action} from './course.model';
+import { Department} from '../department/department.model';
 import { CourseService } from './course.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -11,7 +12,9 @@ export class CourseComponent {
  
   courseParticulars: Array<CourseParticulars>;
   courses: Array<Course>;
+  departments: Array<Department>;
 
+  sessions: Array<Session>;
   model: CourseParticulars;
   formModel: CourseParticulars;
   course: Course;
@@ -33,7 +36,9 @@ export class CourseComponent {
     this.formModel = new CourseParticulars();
     this.course = new Course();
     this.courses = new Array<Course>();
-
+    this.sessions = new Array<Session>();
+    this.departments = new Array<Department>();
+    
     this.count = 1;
     this.editArrayPosition = 0;
     this.action = new Action();

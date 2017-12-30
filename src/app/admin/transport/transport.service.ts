@@ -23,16 +23,16 @@ export class TransportService {
 	}
     
     getTransport(transport: Transport):Observable<Transport> {
-        return this.http.get('http://localhost:9003/transport/' + transport.routeId).map(res => res.json()).map((data: Transport) => {
+        return this.http.get('http://localhost:9003/transport/' + transport.entityId + "/" + transport.routeId).map(res => res.json()).map((data: Transport) => {
         console.log(data);
         return data as Transport;
       });
     }
 
-    getTransports():Observable<Array<Transport>> {
-        return this.http.get('http://localhost:9003/transport').map(res => res.json()).map((data: Array<Transport>) => {
+    getTransports(entityId: Number):Observable<Array<Transport>> {
+        return this.http.get('http://localhost:9003/transport/' + entityId ).map(res => res.json()).map((data: Array<Transport>) => {
         console.log(data);
-        return data["_embedded"].transport as Transport[];
+        return data as Transport[];
       });
     }
 
