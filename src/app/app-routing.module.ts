@@ -20,6 +20,7 @@ import { EorgComponent } from './profile/eorg/eorg.component';
 import { TransportComponent } from './admin/transport/transport.component';
 import { DepartmentComponent } from './admin/department/department.component';
 import { CourseComponent } from './admin/course/course.component';
+import { SchoolYearComponent } from './admin/schoolyear/schoolyear.component';
 
 import { CanActivateAuthGuard } from './login/can-activate.authguard';
 
@@ -46,6 +47,8 @@ const routes: Routes = [
   { path: 'course/:action', component: CourseComponent , canActivate: [CanActivateAuthGuard]},
   { path: 'eorg', component: EorgComponent , canActivate: [CanActivateAuthGuard]},
   { path: 'eorg/:action', component: EorgComponent , canActivate: [CanActivateAuthGuard]},
+  { path: 'schoolyear', component: SchoolYearComponent , canActivate: [CanActivateAuthGuard]},
+  { path: 'schoolyear/:action', component: SchoolYearComponent , canActivate: [CanActivateAuthGuard]},
   { path: 'profile', component: ProfileComponent, canActivate: [CanActivateAuthGuard]},
   { path: 'login', component: LoginComponent}
 ];

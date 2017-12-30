@@ -41,7 +41,8 @@ import { DepartmentComponent } from './admin/department/department.component';
 import { DepartmentService } from './admin/department/department.service';
 import { CourseComponent } from './admin/course/course.component';
 import { CourseService } from './admin/course/course.service';
-
+import { SchoolYearComponent } from './admin/schoolyear/schoolyear.component';
+import { SchoolYearService } from './admin/schoolyear/schoolyear.service';
 
 @NgModule({
   imports: [
@@ -72,10 +73,11 @@ import { CourseService } from './admin/course/course.service';
     TransportComponent,
     DepartmentComponent,
     CourseComponent,
+    SchoolYearComponent,
     EorgComponent
   ],
   providers:[ ProfileService, FeeService, CommonService, DiscountService, DatePipe, 
-              AuthenticationService, CanActivateAuthGuard, AddressService, TransportService, DepartmentService, CourseService, EorgService],
+              AuthenticationService, CanActivateAuthGuard, AddressService, TransportService, DepartmentService, CourseService, SchoolYearService ,EorgService],
   
   bootstrap: [ MainComponent ]
 })

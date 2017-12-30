@@ -1,0 +1,84 @@
+
+
+<header-app></header-app>
+<menu-app></menu-app>
+<section id="main-content" class=" ">
+<section class="wrapper main-wrapper row" style=''>
+    <div class='col-xs-12'>
+        <div class="page-title">
+            <div class="pull-left">
+                <h1 class="title">School Year</h1><!-- PAGE HEADING TAG - END -->
+            </div>
+            <div class="pull-right hidden-xs">
+                <ol class="breadcrumb">
+                    <li>
+                        <a routerLink="/home" routerLinkActive="active"><i class="fa fa-home"></i>Home</a>
+                    </li>
+                    <li>
+                        <a (click)="backClicked()">Finance</a>
+                    </li>
+                    <li class="active">
+                        <strong>Create School Year</strong>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+        <!-- MAIN CONTENT AREA STARTS -->
+    <div class="col-xs-12">
+        <section class="box ">
+        <header class="panel_header">
+            <h2 class="title pull-left"> School Year Module</h2>
+            <div class="actions panel_actions pull-right">
+                <a class="box_toggle fa fa-chevron-down"></a>
+                <a class="box_setting fa fa-cog" data-toggle="modal" href="#section-settings"></a>
+                <a class="box_close fa fa-times"></a>
+            </div>
+        </header>
+        <div class="content-body">
+        <div class="row">
+
+<b>{{message}}</b>
+	<!-- Below block of code generation Action options on web page -->	
+<!--	
+	<input name="action"  [(ngModel)]="action.method" type="radio" (ngModelChange)="onSelectNonCreate()" value="Update" /> Update
+	<input name="action" [(ngModel)]="action.method" type="radio" (ngModelChange)="onSelectNonCreate()" value="View" /> View
+	<input name="action" [(ngModel)]="action.method" type="radio" (ngModelChange)="onSelectCreate()" value="Create" /> Create
+	<input name="action" [(ngModel)]="action.method" type="radio" (ngModelChange)="onSelectNonCreate()" value="Delete" /> Delete
+
+-->
+
+	<!-- Below code show USer ID field only if operation involving seraching of user ID. Like Update/Vide/Delete need search -->
+	 <form (ngSubmit)="createSchoolYear()" #userForm="ngForm"  > 
+		
+		<div class="form-group" *ngIf="action.method == 'Update' || action.method == 'View' || action.method == 'Delete'">
+			<label for="schoolYearId"  >School Year ID</label>
+			<input type="text"  (keyup)="onActionGet()" size=20 class="form-control" id="schoolYearId" required [(ngModel)]="model.schoolYearId" name="schoolYearId" #schoolYearId="ngModel">
+			<select  id="schoolYearId" [(ngModel)]="model.schoolYearId" name="schoolYearId" (ngModelChange)="onActionGet()" schoolYearId="ngModel">
+				<option *ngFor="let schoolYearf of schoolYears;" [value]="schoolYearf.schoolYearId">{{schoolYearf.schoolYearName}}</option>
+			</select>
+		</div>
+
+	
+		<!-- Below fieldset is written from the perspective that all field can be disabled/enabled/visible/hidden in one go -->
+		<fieldset class="form-group"  *ngIf="action.method == 'Create' || action.submethod == 'View'" [disabled]="action.method == 'View' || action.method == 'Delete'"> 
+	
+	<!-- Below code has all data fields on form -->
+		
+			<label for="schoolYearName" >Schol Year Name</label>
+			<input type="text" size=20 class="form-control"  id="schoolYearName" required [(ngModel)]="model.schoolYearName" name="schoolYearName" #schoolYearName="ngModel">
+			
+	
+	</fieldset>
+	<!-- Button is outside of fieldset tag so that it can be enabled/disabled as needed -->
+	<BR>
+	<button type="submit" *ngIf="(((action.method == 'Update' || action.method == 'Delete') && action.submethod == 'View' ) || action.method == 'Create') " class="btn btn-success" >Perform Action</button>
+	
+	</form> 
+		</div>
+        </div>
+        </section>
+    </div>
+</section>
+</section>
