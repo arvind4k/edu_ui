@@ -43,7 +43,7 @@
 
 <div  *ngIf="action.method == 'View'">
 	<label for="departmentName">Select Department</label>
-	<select  id="count" [(ngModel)]="count" name="count" (ngModelChange)="onSelectRoute()" departmentId="ngModel">
+	<select  id="count" [(ngModel)]="count" name="count" (ngModelChange)="onSelectDepartment()" departmentId="ngModel">
 		<option *ngFor="let department of departments; index as i;" [value]="i">{{department.departmentName}}</option>
 	</select>
 </div>

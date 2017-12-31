@@ -3,7 +3,8 @@ export class Course {
     public courseName: string;
     public educationLevel: number;
     public obsolete: string;
-    public sessionId: number;
+    public schoolYearId: number;
+    public entityId: number;
     public courseParticulars: Array<CourseParticulars>;
 }
 

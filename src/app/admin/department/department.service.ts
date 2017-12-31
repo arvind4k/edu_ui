@@ -29,10 +29,10 @@ export class DepartmentService {
       });
     }
 
-    getDepartments():Observable<Array<Department>> {
-        return this.http.get('http://localhost:9003/department').map(res => res.json()).map((data: Array<Department>) => {
+    getDepartments(entityId: Number, schoolYearId: Number):Observable<Array<Department>> {
+        return this.http.get('http://localhost:9003/department/'+ entityId + "/" + schoolYearId).map(res => res.json()).map((data: Array<Department>) => {
         console.log(data);
-        return data["_embedded"].department as Department[];
+        return data as Department[];
       });
     }
 

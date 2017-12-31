@@ -21,7 +21,7 @@ export class DepartmentComponent {
   action: Action;
 
 
-  constructor(private transportService: DepartmentService, private router: Router, private activatedRoute: ActivatedRoute) {  
+  constructor(private departmentService: DepartmentService, private router: Router, private activatedRoute: ActivatedRoute) {  
   
   }
   ngOnInit(): void {
@@ -38,6 +38,10 @@ export class DepartmentComponent {
     this.editArrayPosition = 0;
     this.action = new Action();
     this.action.method = type;
+
+    if (this.action.method == "View") {
+      this.getDepartments();
+    }
   }
   
   addSubject(subjectName: string, subSubjectName: string){
@@ -76,22 +80,29 @@ export class DepartmentComponent {
 
   async onSubmit(){
     this.department.obsolete = '0';
+
+    //below fields need to be updated with session value
+    this.department.entityId = 25;
+    this.department.schoolYearId = 2;
+
     this.department.departmentParticulars = this.departmentParticulars;
+    
     console.log(JSON.stringify(this.department));
-    await this.transportService.createDepartment(this.department).then(result => this.department=result); 
+    await this.departmentService.createDepartment(this.department).then(result => this.department=result); 
   }
-  getRoutes(){
-    this.transportService.getDepartments().subscribe((data: Array<Department>) => {
+  getDepartments(){
+    this.departmentService.getDepartments(25,2).subscribe((data: Array<Department>) => {
       this.departments = data;
       });
   }
-  onSelectRoute(){
+  onSelectDepartment(){
     console.log(this.count);
-    this.department.departmentName = this.departments[this.count].departmentName;
-    this.department.departmentId = this.departments[this.count].departmentId;
-    this.department.departmentParticulars = this.departments[this.count].departmentParticulars;
-    
+    //this.department.departmentName = this.departments[this.count].departmentName;
+    //this.department.departmentId = this.departments[this.count].departmentId;
+    //this.department.departmentParticulars = this.departments[this.count].departmentParticulars;
+    this.department = this.departments[this.count];
     this.departmentParticulars = this.departments[this.count].departmentParticulars;
+    this.action.submethod == 'Edit';
   }
 } 
 
