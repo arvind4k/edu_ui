@@ -40,12 +40,6 @@
 
 </div>
 
-<div  >
-	<label for="sessionId">Select Session</label>
-	<select  id="sessionId" [(ngModel)]="sessions" name="sessions" (ngModelChange)="onSelectRoute()" sessionId="ngModel">
-		<option *ngFor="let session of sessions; index as i;" [value]="session.sessionId">{{session.sessionName}}</option>
-	</select>
-</div>
 
 <div  *ngIf="action.method == 'View'">
 	<label for="courseName">Select Course</label>
@@ -63,24 +57,28 @@
 		<input #courseName type="text" class="form-control"  id="courseName"  name="courseName" [(ngModel)]="course.courseName" #courseName="ngModel">
 	</div>
 	<label for="educationLevel" >Education Level</label>
-	<input #educationLevel type="text"  class="form-control"  id="educationLevel"  name="educationLevel" [(ngModel)]="formModel.educationLevel" #educationLevel="ngModel">
+	<input #educationLevel type="text"  class="form-control"  id="educationLevel"  name="educationLevel" [(ngModel)]="course.educationLevel" #educationLevel="ngModel">
 	
 	<label for="departmentId" >Department Name</label>
-	<input #departmentId type="text"  class="form-control"  id="departmentId"  name="departmentId" [(ngModel)]="formModel.departmentId" #departmentId="ngModel">
-	
+	<!-- <input #departmentId type="text"  class="form-control"  id="departmentId"  name="departmentId" [(ngModel)]="formModel.departmentId" #departmentId="ngModel"> -->
+	<select  id="depPos" [(ngModel)]="depPos" name="depPos" (ngModelChange)="onSelectDepartment()" depPos="ngModel">
+		<option *ngFor="let departmentf of departments; let i = index" [value]="i">{{departmentf.departmentName}}</option>
+	</select>
 	
 	<label for="subjectId" >Subject Name  </label>
-	<input #subjectId type="text"  class="form-control"  id="subjectId" name="subjectId" [(ngModel)]="formModel.subjectId" #subjectId="ngModel">
-	
+	<!-- <input #subjectId type="text"  class="form-control"  id="subjectId" name="subjectId" [(ngModel)]="formModel.subjectId" #subjectId="ngModel"> -->
+	<select  id="subPos" [(ngModel)]="subPos" name="subPos" (ngModelChange)="onSelectSubject()" subPos="ngModel">
+		<option *ngFor="let departmentp of departmentParticulars; let i = index" [value]="i">{{departmentp.subjectName + " : " + departmentp.subSubjectName}}</option>
+	</select>
 	
 
-	<button (click)="addSubject(departmentId.value, subjectId.value)" *ngIf = "action.submethod != 'Edit'">Add Subject</button>
+	<button (click)="addSubject()" *ngIf = "action.submethod != 'Edit'">Add Subject</button>
 	<button (click)="editSubject(departmentId.value, subjectId.value)" *ngIf = "action.submethod == 'Edit'">Edit Subject</button>
 </div>
 
 	<br><br>
 
-<div  *ngIf="count > 1 || action.method == 'View'">
+<div  *ngIf="count > -1 || action.method == 'View'">
 	<table class="table table-bordered">
 		
 			<tr><td style="text-align: left;"> Course Name : {{course.courseName}} </td></tr>
@@ -95,12 +93,12 @@
 				<td style="text-align: Center;">Action</td>
 			</tr>
 		
-		<tr *ngFor="let coursep of courseParticulars; let i = index">
+		<tr *ngFor="let formModelv of formModel; let i = index">
 			<td style="text-align: Center;">{{i+1}}</td>
-			<td style="text-align: Center;">{{coursep.departmentId}}</td>
-			<td style="text-align: Center;">{{coursep.subjectId}}</td>
-			<td style="text-align: Center;">{{coursep.obsolete}}</td>
-			<td style="text-align: Center;"><button (click)="actionEdit(i+1,coursep.departmentId,coursep.subjectId)">Edit</button></td>
+			<td style="text-align: Center;">{{formModelv.departmentName}}</td>
+			<td style="text-align: Center;">{{formModelv.departmentParticulars[0].subjectName + " : " + formModelv.departmentParticulars[0].subSubjectName}}</td>
+			<td style="text-align: Center;">{{formModelv.departmentParticulars[0].obsolete}}</td>
+			<td style="text-align: Center;"><button (click)="actionEdit(i+1)">Edit</button></td>
 		</tr>
 		
 	  </table>
