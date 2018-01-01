@@ -7,14 +7,22 @@ import { Router, ActivatedRoute } from '@angular/router';
   templateUrl: './menu.view.html'
 })
 export class MenuComponent {
-  	title = 'eSchool';
-  	constructor(
-        private authenticationService: AuthenticationService,
-        private router: Router,
-    ) { }
+  title = 'eSchool';
+  loggedInUser: string;
+  profileImage: string;
+  
+  constructor(
+    private authenticationService: AuthenticationService,
+    private router: Router,
+  ) { }
+
+  ngOnInit(): void {
+    this.loggedInUser = this.authenticationService.getFullName();
+    this.profileImage='/assets/images/profile.jpg';
+  }
 
 	logout(){
-        this.authenticationService.logout();
-        this.router.navigate(['./login']);
-    }
+    this.authenticationService.logout();
+    this.router.navigate(['./login']);
+  }
 }
