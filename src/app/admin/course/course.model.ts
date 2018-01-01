@@ -1,5 +1,5 @@
 export class Course {
-    public courseId: string;
+    public courseId: number;
     public courseName: string;
     public educationLevel: number;
     public obsolete: string;
@@ -10,6 +10,7 @@ export class Course {
 
 export class  CourseParticulars{
     public recordId: string;
+    public courseId: number;
     public departmentId: string;
     public subjectId: string; //Foreign Key
     public obsolete: string;

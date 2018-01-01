@@ -29,10 +29,10 @@ export class CourseService {
       });
     }
 
-    getCourses():Observable<Array<Course>> {
-        return this.http.get('http://localhost:9003/course').map(res => res.json()).map((data: Array<Course>) => {
+    getCourses(entityId: Number, schoolYearId: Number):Observable<Array<Course>> {
+        return this.http.get('http://localhost:9003/course/' + entityId + "/" + schoolYearId).map(res => res.json()).map((data: Array<Course>) => {
         console.log(data);
-        return data["_embedded"].course as Course[];
+        return data as Course[];
       });
     }
 

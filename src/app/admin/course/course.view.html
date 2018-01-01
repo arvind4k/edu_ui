@@ -43,7 +43,7 @@
 
 <div  *ngIf="action.method == 'View'">
 	<label for="courseName">Select Course</label>
-	<select  id="count" [(ngModel)]="count" name="count" (ngModelChange)="onSelectRoute()" courseId="ngModel">
+	<select  id="count" [(ngModel)]="count" name="count" (ngModelChange)="onSelectCourse()" courseId="ngModel">
 		<option *ngFor="let course of courses; index as i;" [value]="i">{{course.courseName}}</option>
 	</select>
 </div>
@@ -73,7 +73,7 @@
 	
 
 	<button (click)="addSubject()" *ngIf = "action.submethod != 'Edit'">Add Subject</button>
-	<button (click)="editSubject(departmentId.value, subjectId.value)" *ngIf = "action.submethod == 'Edit'">Edit Subject</button>
+	<button (click)="editSubject()" *ngIf = "action.submethod == 'Edit'">Edit Subject</button>
 </div>
 
 	<br><br>
