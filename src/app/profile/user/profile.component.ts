@@ -24,4 +24,12 @@ export class ProfileComponent {
   addMoreGuardian(){
     this.model.guardians.push(new Guardian());
   }
+
+  addMoreQualification(){
+    this.model.qualifications.push(new Qualification());
+  }
+
+  addMoreAddress(){
+    this.model.addresses.push(new Address());
+  }
 } 
