@@ -39,10 +39,10 @@
                         <form #pageForm="ngForm">
                             <div class="col-xs-12 col-sm-9 col-md-8">
                                 <div class="form-group">
-                                    <label class="form-label">Select Batch</label>
+                                    <label class="form-label">Select Class</label>
                                     <span class="desc"></span>
                                     <select class="form-control" id="batchId" [(ngModel)]="batchId" name="batchId" batchId="ngModel" (change)= "getFeeList()">
-                                        <option [value]="0">Select a Batch</option>
+                                        <option [value]="0">Select a Class</option>
                                         <option *ngFor="let batch of batches" [value]="batch.batchId">{{batch.batchName}}</option>
                                     </select>
                                 </div>

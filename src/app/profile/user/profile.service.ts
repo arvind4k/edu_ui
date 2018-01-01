@@ -24,15 +24,15 @@ export class ProfileService {
 	}
     
 
-  getUser(user: Profile):Observable<Profile> {
+  getUser(user: User):Observable<Profile> {
     return this.http.get('http://localhost:1900/user/' + user.userId).map(res => res.json()).map((data: Profile) => {
         return data as Profile;
       });
     }
 
 	private handleError(error: any): Promise<any> {
-        console.error('An error occurred', error);
-        return Promise.reject(error.message || error);
-    }
+    console.error('An error occurred', error);
+    return Promise.reject(error.message || error);
+  }
 
 }

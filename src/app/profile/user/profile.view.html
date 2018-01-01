@@ -38,210 +38,368 @@
         <div class="content-body">
         <div class="row">
         <form action ="#" method="post">
-            <div class="col-xs-12 col-sm-9 col-md-8">           
-            <div class="form-group" >
-                <label class="form-label" >First Name</label>
-                <span class="desc"></span>
-                <div class="controls">
-                    <input class="form-control" id="firstName" required [(ngModel)]="model.firtName" name="firstName" #name="ngModel">
-                    <input type="text" class="form-control" >
+            <div class="col-xs-12 col-sm-3 col-md-8">
+                <div class="form-group">
+                    <label class="form-label" >First Name</label>
+                    <div class="controls">
+                    <input class="form-control" id="firstName" required [(ngModel)]="model.user.firstName" name="firstName" #name="ngModel">
+                    </div>
+                </div>
+            
+                <div class="form-group">
+                    <label class="form-label" >Middle Name</label>
+                    <div class="controls">
+                    <input class="form-control" id="middleName" required [(ngModel)]="model.user.middleName" name="middleName" #name="ngModel">
+                    </div>
+                </div>
+            
+                <div class="form-group">
+                    <label class="form-label" >Last Name</label>
+                    <div class="controls">
+                    <input class="form-control" id="lastName" required [(ngModel)]="model.user.lastName" name="lastName" #name="ngModel">
+                    </div>
+                </div>
+            
+                <div class="form-group">
+                    <label class="form-label" >Username</label>
+                    <div class="controls">
+                    <input class="form-control" id="username" required [(ngModel)]="model.user.username" name="username" #name="ngModel">
+                    </div>
+                </div>
+            
+                <div class="form-group">
+                    <label class="form-label" >Email</label>
+                    <div class="controls">
+                    <input class="form-control" id="email" required [(ngModel)]="model.user.email" name="email" #name="ngModel">
+                    </div>
+                </div>
+            
+                <div class="form-group">
+                    <label class="form-label">Gender</label>
+                    <div class="controls">
+                    <input class="form-control" id="gender" required [(ngModel)]="model.user.gender" name="gender" #name="ngModel">
+                    </div>
+                </div>
+            
+                <div class="form-group">
+                    <label class="form-label" >Date of Birth</label>
+                    <span class="desc">e.g. "04/03/2015"</span>
+                    <div class="controls">
+                    <input class="form-control datepicker" data-format="mm/dd/yyyy" id="dob" required [(ngModel)]="model.user.dob" name="dob" #name="ngModel">
+                    </div>
+                </div>
+            
+                <div class="form-group">
+                    <label class="form-label" >Profile Image</label>
+                    <span class="desc"></span>
+                    <div class="controls">
+                        <input type="file" class="form-control" >
+                    </div>
+                </div>
+                        
+                <div class="form-group">
+                    <label class="form-label" >Brief Description</label>
+                    <span class="desc">e.g. "Any allergy or speciality"</span>
+                    <div class="controls">
+                        <textarea class="form-control autogrow" cols="5" ></textarea>
+                    </div>
+                </div>
+                      
+                <div class="col-xs-12 col-sm-9 col-md-8 padding-bottom-30">
+                    <div class="text-left">
+                        <button type="button" class="btn btn-primary">Save</button>
+                        <button type="button" class="btn">Cancel</button>
+                    </div>
                 </div>
             </div>
-
-
-                        <div class="form-group">
-                            <label class="form-label" >Date of Birth</label>
-                            <span class="desc">e.g. "04/03/2015"</span>
-                            <div class="controls">
-                                <input type="text" value="" class="form-control datepicker" data-format="mm/dd/yyyy" >
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="form-label" >Gender</label>
-                            <span class="desc"></span>
-                                <select class="form-control">
-                                    <option value="v"></option>
-                                    <option value="male" >Male</option>
-                                    <option value="female" >Female</option>
-                                </select>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" >Profile Image</label>
-                            <span class="desc"></span>
-                                                        <div class="controls">
-                                <input type="file" class="form-control" >
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" >Department</label>
-                            <span class="desc"></span>
-                                <select class="form-control ">
-                                      <option value="v"></option>
-                                    <option value="v"  value="Computer Engineering">Computer Engineering</option>
-                                    <option value="Architecture">Architecture</option>
-                                    <option value="MBA">MBA</option>
-                                    <option value="Automobile Engg.">Automobile Engg.</option>
-                                    <option value="Civil Engg.">Civil Engg.</option>
-                                    <option value="Mechanical Engg.">Mechanical Engg.</option>
-                                    <option value="BBA">BBA</option>
-                                </select>
-                        </div>
-
-            <div class="form-group">
-                            <label class="form-label" >Year</label>
-                            <span class="desc"></span>
-                            <div class="controls">
-                                <input type="text" value="" class="form-control" >
-                            </div>
-                        </div>
-
-
-                        <div class="form-group">
-                            <label class="form-label" >Brief</label>
-                            <span class="desc">e.g. "Enter any size of text description here"</span>
-                            <div class="controls">
-                                <textarea class="form-control autogrow" cols="5" ></textarea>
-                            </div>
-                        </div>
-                            <div class="form-group">
-                                <label class="form-label" >Website URL</label>
-                                <span class="desc"></span>
-                                <div class="controls">
-                                    <input type="text" class="form-control"  value="" id="field-51">
-                                </div>
-                            </div>
-
-                    </div>
-                    
-                        <div class="col-xs-12 col-sm-9 col-md-8 padding-bottom-30">
-                                <div class="text-left">
-                                <button type="button" class="btn btn-primary">Save</button>
-                                <button type="button" class="btn">Cancel</button>
-                            </div>
-                        </div>
-                    </form>
+        </form>
     </div>
-
-
-    </div>
-        </section></div>
-
+</div>
+</section>
+</div>
 
 <div class="col-xs-12">
     <section class="box ">
-            <header class="panel_header">
-                <h2 class="title pull-left">Student Account Info</h2>
-                <div class="actions panel_actions pull-right">
-                    <a class="box_toggle fa fa-chevron-down"></a>
-                    <a class="box_setting fa fa-cog" data-toggle="modal" href="#section-settings"></a>
-                    <a class="box_close fa fa-times"></a>
-                </div>
-            </header>
-            <div class="content-body">
-    <div class="row">
-    <form action="#" method="post">
-                    <div class="col-xs-12 col-sm-9 col-md-8">
-                        
-            <div class="form-group">
-                            <label class="form-label" >Email</label>
-                            <span class="desc"></span>
-                            <div class="controls">
-                                <input type="text" value="" class="form-control" >
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="form-label" >Phone</label>
-                            <span class="desc">e.g. "(534) 253-5353"</span>
-                            <div class="controls">
-                                <input type="text" value="" class="form-control"  data-mask="phone"  placeholder="(999) 999-9999">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" >Password</label>
-                            <span class="desc"></span>
-                            <div class="controls">
-                                <input type="password" value="" class="form-control" >
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" >Confirm Password</label>
-                            <span class="desc"></span>
-                            <div class="controls">
-                                <input type="password"  value="" class="form-control" id="field-21">
-                            </div>
-                        </div>
-                    </div>
- 
-
-                        <div class="col-xs-12 col-sm-9 col-md-8 padding-bottom-30">
-                            <div class="text-left">
-                                <button type="button" class="btn btn-primary">Save</button>
-                                <button type="button" class="btn">Cancel</button>
-                            </div>
-                        </div>
-                    </form>
-    </div>
-
-
-    </div>
-        </section></div>
-
-<div class="col-xs-12">
-    <section class="box ">
-            <header class="panel_header">
-                <h2 class="title pull-left">Student Social Media Info</h2>
-                <div class="actions panel_actions pull-right">
-                    <a class="box_toggle fa fa-chevron-down"></a>
-                    <a class="box_setting fa fa-cog" data-toggle="modal" href="#section-settings"></a>
-                    <a class="box_close fa fa-times"></a>
-                </div>
-            </header>
-            <div class="content-body">
-    <div class="row">
-    <form action="#" method="post">
-                        <div class="col-xs-12 col-sm-9 col-md-8">
-                            
+        <header class="panel_header">
+            <h2 class="title pull-left">School Info</h2>
+            <div class="actions panel_actions pull-right">
+                <a class="box_toggle fa fa-chevron-down"></a>
+                <a class="box_setting fa fa-cog" data-toggle="modal" href="#section-settings"></a>
+                <a class="box_close fa fa-times"></a>
+            </div>
+        </header>
+        <div class="content-body">
+        <div class="row">
+        <form action="#" method="post">
+            <div class="col-xs-12 col-sm-9 col-md-8">
                 <div class="form-group">
-                                <label class="form-label" >Facebook URL</label>
-                                <span class="desc"></span>
-                                <div class="controls">
-                                    <input type="text" class="form-control"  value="" id="field-31">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="form-label" >Twitter URL</label>
-                                <span class="desc"></span>
-                                <div class="controls">
-                                    <input type="text" class="form-control"  value="" id="field-41">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="form-label" >Google Plus URL</label>
-                                <span class="desc"></span>
-                                <div class="controls">
-                                    <input type="text" class="form-control"  value="" id="field-51">
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="col-xs-12 col-sm-9 col-md-8 padding-bottom-30">
-                            <div class="text-left">
-                                <button type="button" class="btn btn-primary">Save</button>
-                                <button type="button" class="btn">Cancel</button>
-                            </div>
-                        </div>
-
-                    </form>
-    </div>
-
-
-    </div>
-        </section></div>
-
-<!-- MAIN CONTENT AREA ENDS -->
+                    <label class="form-label">Class</label>
+                    <span class="desc"></span>
+                    <div class="controls">
+                        <input type="text" value="" class="form-control" [(ngModel)]="model.schoolDetails.class">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Section</label>
+                    <span class="desc"></span>
+                    <div class="controls">
+                        <input type="text" value="" class="form-control" [(ngModel)]="model.schoolDetails.section">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Department</label>
+                    <span class="desc"></span>
+                    <div class="controls">
+                        <input type="text" value="" class="form-control" [(ngModel)]="model.schoolDetails.department">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Entrollment Date</label>
+                    <span class="desc"></span>
+                    <div class="controls">
+                        <input type="text" value="" class="form-control" [(ngModel)]="model.schoolDetails.entrollmentDate">
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-9 col-md-8 padding-bottom-30">
+                    <div class="text-left">
+                        <button type="button" class="btn btn-primary">Save</button>
+                        <button type="button" class="btn">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+        </div>
+        </div>
     </section>
+</div>
+
+<div class="col-xs-12">
+    <section class="box ">
+        <header class="panel_header">
+            <h2 class="title pull-left">Parents/Guardians Info</h2>
+            <div class="actions panel_actions pull-right">
+                <a class="box_toggle fa fa-chevron-down"></a>
+                <a class="box_setting fa fa-cog" data-toggle="modal" href="#section-settings"></a>
+                <a class="box_close fa fa-times"></a>
+            </div>
+        </header>
+        <div class="content-body">
+        <div class="row">
+        <form action="#" method="post">
+            <div class="col-xs-12 col-sm-9 col-md-8">
+            <div *ngFor="let guardian of model.guardians, let i=index">
+                <!-- <label class="form-label"><b>Guardian{{i}}</b></label> -->
+                <div class="form-group">
+                    <label class="form-label">Relationship With Student</label>
+                    <span class="desc"></span>
+                    <div class="controls">
+                        <input type="text" value="" class="form-control" [(ngModel)]="model.guardians[i].relationship">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">First Name</label>
+                    <span class="desc"></span>
+                    <div class="controls">
+                        <input type="text" value="" class="form-control" [(ngModel)]="model.guardians[i].firstName">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Last Name</label>
+                    <span class="desc"></span>
+                    <div class="controls">
+                        <input type="text" value="" class="form-control" [(ngModel)]="model.guardians[i].lastName">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Education Qualification</label>
+                    <span class="desc"></span>
+                    <div class="controls">
+                        <input type="text" value="" class="form-control" [(ngModel)]="model.guardians[i].qualification">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Phone</label>
+                    <span class="desc"></span>
+                    <div class="controls">
+                        <input type="text" value="" class="form-control" [(ngModel)]="model.guardians[i].phone">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Mobile</label>
+                    <span class="desc"></span>
+                    <div class="controls">
+                        <input type="text" value="" class="form-control" [(ngModel)]="model.guardians[i].mobile">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Email</label>
+                    <span class="desc"></span>
+                    <div class="controls">
+                        <input type="text" value="" class="form-control" [(ngModel)]="model.guardians[i].email">
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-9 col-md-8 padding-bottom-30">
+                    <div class="text-left">
+                        <button type="button" class="btn btn-primary" (click)="addMoreGuardian()">Add More</button>
+                        <button type="button" class="btn btn-primary">Save</button>
+                        <button type="button" class="btn">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+        </div>
+        </div>
     </section>
+</div>
+<div class="col-xs-12">
+    <section class="box ">
+        <header class="panel_header">
+            <h2 class="title pull-left">Address Info</h2>
+            <div class="actions panel_actions pull-right">
+                <a class="box_toggle fa fa-chevron-down"></a>
+                <a class="box_setting fa fa-cog" data-toggle="modal" href="#section-settings"></a>
+                <a class="box_close fa fa-times"></a>
+            </div>
+        </header>
+        <div class="content-body">
+        <div class="row">
+        <form action="#" method="post">
+            <div class="col-xs-12 col-sm-9 col-md-8">
+            <div *ngFor="let address of model.addresses, let i=index">
+                <div class="form-group">
+                    <label class="form-label">Address Type</label>
+                    <span class="desc"></span>
+                    <div class="controls">
+                        <input type="text" value="" class="form-control" [(ngModel)]="model.addresses[i].addressType">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Address Line1</label>
+                    <span class="desc"></span>
+                    <div class="controls">
+                        <input type="text" value="" class="form-control" [(ngModel)]="model.addresses[i].address1">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Address Line2</label>
+                    <span class="desc"></span>
+                    <div class="controls">
+                        <input type="text" value="" class="form-control" [(ngModel)]="model.addresses[i].address2">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">City</label>
+                    <span class="desc"></span>
+                    <div class="controls">
+                        <input type="text" value="" class="form-control" [(ngModel)]="model.addresses[i].city">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">State</label>
+                    <span class="desc"></span>
+                    <div class="controls">
+                        <input type="text" value="" class="form-control" [(ngModel)]="model.addresses[i].state">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Postal Code</label>
+                    <span class="desc"></span>
+                    <div class="controls">
+                        <input type="text" value="" class="form-control" [(ngModel)]="model.addresses[i].zip">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Country</label>
+                    <span class="desc"></span>
+                    <div class="controls">
+                        <input type="text" value="" class="form-control" [(ngModel)]="model.addresses[i].country">
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-9 col-md-8 padding-bottom-30">
+                    <div class="text-left">
+                        <button type="button" class="btn btn-primary">Add More</button>
+                        <button type="button" class="btn btn-primary">Save</button>
+                        <button type="button" class="btn">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+        </div>
+        </div>
+    </section>
+</div>
+<div class="col-xs-12">
+    <section class="box ">
+        <header class="panel_header">
+            <h2 class="title pull-left">Previous Qualification Info</h2>
+            <div class="actions panel_actions pull-right">
+                <a class="box_toggle fa fa-chevron-down"></a>
+                <a class="box_setting fa fa-cog" data-toggle="modal" href="#section-settings"></a>
+                <a class="box_close fa fa-times"></a>
+            </div>
+        </header>
+        <div class="content-body">
+        <div class="row">
+        <form action="#" method="post">
+            <div class="col-xs-12 col-sm-9 col-md-8">
+            <div *ngFor="let address of model.qualifications, let i=index">
+                <div class="form-group">
+                    <label class="form-label">Class</label>
+                    <span class="desc"></span>
+                    <div class="controls">
+                        <input type="text" value="" class="form-control" [(ngModel)]="model.qualifications[i].class">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Grade</label>
+                    <span class="desc"></span>
+                    <div class="controls">
+                        <input type="text" value="" class="form-control" [(ngModel)]="model.qualifications[i].grade">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Score</label>
+                    <span class="desc"></span>
+                    <div class="controls">
+                        <input type="text" value="" class="form-control" [(ngModel)]="model.qualifications[i].score">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Institution</label>
+                    <span class="desc"></span>
+                    <div class="controls">
+                        <input type="text" value="" class="form-control" [(ngModel)]="model.qualifications[i].institution">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Board / University</label>
+                    <span class="desc"></span>
+                    <div class="controls">
+                        <input type="text" value="" class="form-control" [(ngModel)]="model.qualifications[i].university">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Passing Year</label>
+                    <span class="desc"></span>
+                    <div class="controls">
+                        <input type="text" value="" class="form-control" [(ngModel)]="model.qualifications[i].passingYear">
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-9 col-md-8 padding-bottom-30">
+                    <div class="text-left">
+                        <button type="button" class="btn btn-primary">Add More</button>
+                        <button type="button" class="btn btn-primary">Save</button>
+                        <button type="button" class="btn">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+        </div>
+        </div>
+    </section>
+    </div>
+    </section>
+</section>
