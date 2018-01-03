@@ -1,0 +1,114 @@
+
+<header-app></header-app>
+<menu-app></menu-app>
+<section id="main-content" class=" ">
+<section class="wrapper main-wrapper row" style=''>
+    <div class='col-xs-12'>
+        <div class="page-title">
+            <div class="pull-left">
+                <h1 class="title">Role</h1><!-- PAGE HEADING TAG - END -->
+            </div>
+            <div class="pull-right hidden-xs">
+                <ol class="breadcrumb">
+                    <li>
+                        <a routerLink="/home" routerLinkActive="active"><i class="fa fa-home"></i>Home</a>
+                    </li>
+                    <li>
+                        <a (click)="backClicked()">Role</a>
+                    </li>
+                    <li class="active">
+                        <strong>Operation</strong>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+        <!-- MAIN CONTENT AREA STARTS -->
+    <div class="col-xs-12">
+        <section class="box ">
+        <header class="panel_header">
+            <h2 class="title pull-left"> Mihir Bhoj Degree College</h2>
+            <div class="actions panel_actions pull-right">
+                <a class="box_toggle fa fa-chevron-down"></a>
+                <a class="box_setting fa fa-cog" data-toggle="modal" href="#section-settings"></a>
+                <a class="box_close fa fa-times"></a>
+            </div>
+        </header>
+        <div class="content-body">
+        <div class="row">
+
+</div>
+
+
+<div  *ngIf="action.method == 'View'">
+	<label for="roleName">Select Role</label>
+	<select  id="count" [(ngModel)]="count" name="count" (ngModelChange)="onSelectRole()" count="ngModel">
+		<option *ngFor="let role of userRoles; index as i;" [value]="i">{{role.roleName}}</option>
+	</select>
+</div>
+
+
+<div  *ngIf="action.method == 'Create' || action.submethod == 'Edit'">
+
+		<label for="roleName" >Role Name</label>
+		<input #roleName type="text" class="form-control"  id="roleName"  name="roleName" [(ngModel)]="userRole.roleName" #roleName="ngModel">
+
+</div>
+
+	<br><br>
+
+<div >
+
+	<table class="table table-bordered">
+			<tr>
+			
+				<td style="text-align: Center;">S. No.</td>
+				<td style="text-align: Center;">Module Name</td>
+				<td style="text-align: Center;">View</td>
+				<td style="text-align: Center;">Edit</td>
+				<td style="text-align: Center;">Update</td>
+				<td style="text-align: Center;">Delete</td>
+			</tr>
+		
+		<tr *ngFor="let rolep of userRoleParticulars; index as i;">
+			<td style="text-align: Center;">{{i+1}}</td>
+			<td style="text-align: Center;">{{rolep.moduleName}}</td>
+			<td style="text-align: Center;">
+				<select class="form-control" id="oview" [(ngModel)]="rolep.oview" name="oview" view="ngModel">
+					<option value=0>No</option>
+					<option value=1>Yes</option>
+				</select>
+			</td>
+			<td style="text-align: Center;">
+					<select class="form-control" id="oedit" [(ngModel)]="rolep.oedit" name="oedit" view="ngModel">
+							<option value=0>No</option>
+							<option value=1>Yes</option>
+						</select>
+			</td>
+			<td style="text-align: Center;">
+					<select class="form-control" id="oupdate" [(ngModel)]="rolep.oupdate" name="oupdate" view="ngModel">
+							<option value=0>No</option>
+							<option value=1>Yes</option>
+						</select>
+			</td>
+			<td style="text-align: Center;">
+					<select class="form-control" id="odelete" [(ngModel)]="rolep.odelete" name="odelete" view="ngModel">
+							<option value=0>No</option>
+							<option value=1>Yes</option>
+						</select>
+			</td>
+		</tr>
+		
+	  </table>
+
+	  <form (ngSubmit)="onSubmit()" #userForm="ngForm">
+			<button type="submit" class="btn btn-success" >Commit Role</button>		
+	  </form>
+	  
+		</div>
+        </div>
+        </section>
+    </div>
+</section>
+</section>
