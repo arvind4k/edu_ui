@@ -43,6 +43,8 @@ import { CourseComponent } from './admin/course/course.component';
 import { CourseService } from './admin/course/course.service';
 import { SchoolYearComponent } from './admin/schoolyear/schoolyear.component';
 import { SchoolYearService } from './admin/schoolyear/schoolyear.service';
+import { RoleComponent } from './admin/security/role.component';
+import { RoleService } from './admin/security/role.service';
 
 @NgModule({
   imports: [
@@ -74,10 +76,11 @@ import { SchoolYearService } from './admin/schoolyear/schoolyear.service';
     DepartmentComponent,
     CourseComponent,
     SchoolYearComponent,
+    RoleComponent,
     EorgComponent
   ],
   providers:[ ProfileService, FeeService, CommonService, DiscountService, DatePipe, 
-              AuthenticationService, CanActivateAuthGuard, AddressService, TransportService, DepartmentService, CourseService, SchoolYearService ,EorgService],
+              AuthenticationService, CanActivateAuthGuard, AddressService, TransportService, DepartmentService, CourseService, SchoolYearService, RoleService, EorgService],
   
   bootstrap: [ MainComponent ]
 })
