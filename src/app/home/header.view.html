@@ -19,7 +19,7 @@
                             	<li class="unread status-available">
                                 	<a href="javascript:;">
                                     	<div class="user-img">
-                                        <img src="data/profile/avatar-1.png" alt="user-image" class="img-circle img-inline">
+                                        <img src="/assets/images/profile.jpg" alt="user-image" class="img-circle img-inline">
                                         </div>
                                         <div>
                                             <span class="name">
@@ -95,7 +95,7 @@
             <ul class="info-menu right-links list-inline list-unstyled">
                 <li class="profile">
                     <a href="#" data-toggle="dropdown" class="toggle">
-                        <img src="/assets/data/profile/profile-university.jpg" alt="user-image" class="img-circle img-inline">
+                        <img src="/assets/images/profile.jpg" alt="user-image" class="img-circle img-inline">
                         <span>Test User<i class="fa fa-angle-down"></i></span>
                     </a>
                     <ul class="dropdown-menu profile animated fadeIn">
@@ -117,9 +117,9 @@
                                 Help
                             </a>
                         </li>
-                        <li class="last">
-                            <a href="ui-login.html">
-                                <i class="fa fa-lock"></i>
+                        <li class="last" (click)="logout()">
+                            <a href="#">
+                                <i class="fa fa-lock" ></i>
                                 Logout
                             </a>
                         </li>
