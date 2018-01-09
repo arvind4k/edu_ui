@@ -22,10 +22,10 @@ export class AuthenticationService {
             //console.log(JSON.stringify({username: username, password: password}));
             // login successful if there's a jwt token in the response
             let token = response.json() && response.json().token;
-            console.log("token ========== ",response.json().username);
+            //console.log("token ========== ",response.json().username);
             if (response.status==200) {
               // store username and jwt token in local storage to keep user logged in between page refreshes
-              localStorage.setItem('currentUser', JSON.stringify({ username: username, token: token, firstName: response.json().firstName, lastName: response.json().lastName, userId: response.json().userId,schoolYearId:response.json().schoolYearId, schoolYear: response.json().schoolYear, eorgId: response.json().eorgId}));
+              localStorage.setItem('currentUser', JSON.stringify({ username: username, token: token, firstName: response.json().firstName, lastName: response.json().lastName, userId: response.json().userId,schoolYearId:response.json().schoolYearId, schoolYear: response.json().schoolYear, eorgId: response.json().eorgId,profileComplete:response.json().profileComplete}));
               // return true to indicate successful login
               return true;
             } else {
@@ -69,6 +69,12 @@ export class AuthenticationService {
       var currentUser = JSON.parse(localStorage.getItem('currentUser'));
       var userId= currentUser.userId;
       return userId ? userId : "";
+    }
+
+    isProfileComplete(): boolean {
+      var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+      var profileComplete= currentUser.profileComplete;
+      return profileComplete=='1' ? true : false;
     }
  
     logout(): void {

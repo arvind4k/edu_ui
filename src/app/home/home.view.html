@@ -2,6 +2,9 @@
 <div class="page-container row-fluid container-fluid">
 <menu-app></menu-app>
 <router-outlet></router-outlet>
+<div *ngIf="!isProfileComplete">
+	<profile-app></profile-app>
+</div>
 
 
 <!-- <h1>{{title}}</h1>

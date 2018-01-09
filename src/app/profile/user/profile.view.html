@@ -42,7 +42,7 @@
                 <div class="form-group">
                     <label class="form-label" >First Name</label>
                     <div class="controls">
-                    <input class="form-control" id="firstName" required [(ngModel)]="model.user.firstName" name="firstName" #name="ngModel">
+                    <input class="form-control" id="firstName" required [(ngModel)]="model.user.firstName" name="firstName" #firstName="ngModel">
                     </div>
                 </div>
             
@@ -63,21 +63,35 @@
                 <div class="form-group">
                     <label class="form-label" >Username</label>
                     <div class="controls">
-                    <input class="form-control" id="username" required [(ngModel)]="model.user.username" name="username" #name="ngModel">
+                    <input class="form-control" id="username" required [(ngModel)]="model.user.username" name="username" #username="ngModel">
                     </div>
                 </div>
             
                 <div class="form-group">
                     <label class="form-label" >Email</label>
                     <div class="controls">
-                    <input class="form-control" id="email" required [(ngModel)]="model.user.email" name="email" #name="ngModel">
+                    <input class="form-control" id="email" required [(ngModel)]="model.user.email" name="email" #email="ngModel">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" >Phone</label>
+                    <div class="controls">
+                    <input class="form-control" id="phone" required [(ngModel)]="model.user.phone" name="phone" #phone="ngModel">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" >Mobile</label>
+                    <div class="controls">
+                    <input class="form-control" id="mobile" required [(ngModel)]="model.user.mobile" name="mobile" #mobile="ngModel">
                     </div>
                 </div>
             
                 <div class="form-group">
                     <label class="form-label">Gender</label>
                     <div class="controls">
-                    <input class="form-control" id="gender" required [(ngModel)]="model.user.gender" name="gender" #name="ngModel">
+                    <input class="form-control" id="gender" required [(ngModel)]="model.user.gender" name="gender" #gender="ngModel">
                     </div>
                 </div>
             
@@ -85,10 +99,10 @@
                     <label class="form-label" >Date of Birth</label>
                     <span class="desc">e.g. "04/03/2015"</span>
                     <div class="controls">
-                    <input class="form-control datepicker" data-format="mm/dd/yyyy" id="dob" required [(ngModel)]="model.user.dob" name="dob" #name="ngModel">
+                    <input class="form-control datepicker" data-format="mm/dd/yyyy" id="dateOfBirth" required [(ngModel)]="model.user.dateOfBirth" name="dateOfBirth" #dateOfBirth="ngModel">
                     </div>
                 </div>
-            
+                
                 <div class="form-group">
                     <label class="form-label" >Profile Image</label>
                     <span class="desc"></span>
@@ -96,7 +110,7 @@
                         <input type="file" class="form-control" >
                     </div>
                 </div>
-                        
+
                 <div class="form-group">
                     <label class="form-label" >Brief Description</label>
                     <span class="desc">e.g. "Any allergy or speciality"</span>
@@ -107,7 +121,7 @@
                       
                 <div class="col-xs-12 col-sm-9 col-md-8 padding-bottom-30">
                     <div class="text-left">
-                        <button type="button" class="btn btn-primary">Save</button>
+                        <button type="button" class="btn btn-primary" (click)="saveUser();">Save</button>
                         <button type="button" class="btn">Cancel</button>
                     </div>
                 </div>
@@ -133,36 +147,32 @@
         <form action="#" method="post">
             <div class="col-xs-12 col-sm-9 col-md-8">
                 <div class="form-group">
-                    <label class="form-label">Class</label>
+                    <label class="form-label">Course</label>
                     <span class="desc"></span>
                     <div class="controls">
-                        <input type="text" value="" class="form-control" [(ngModel)]="model.schoolDetails.class">
+                        <select class="form-control" id="courseId" [(ngModel)]="model.schoolDetails.courseId" name="courseId" #courseId="ngModel" required>
+                            <option value="0">Select A Course</option>
+                            <option *ngFor="let course of courses" [value]="course.courseId">{{course.courseName}}</option>
+                        </select>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="form-label">Section</label>
                     <span class="desc"></span>
                     <div class="controls">
-                        <input type="text" value="" class="form-control" [(ngModel)]="model.schoolDetails.section">
+                        <input type="text" name="section" id="section" class="form-control" [(ngModel)]="model.schoolDetails.section">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="form-label">Department</label>
+                    <label class="form-label">Enrollment Date</label>
                     <span class="desc"></span>
                     <div class="controls">
-                        <input type="text" value="" class="form-control" [(ngModel)]="model.schoolDetails.department">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Entrollment Date</label>
-                    <span class="desc"></span>
-                    <div class="controls">
-                        <input type="text" value="" class="form-control" [(ngModel)]="model.schoolDetails.entrollmentDate">
+                        <input type="text" name="entrollmentDate" data-format="dd/mm/yyyy" id="entrollmentDate" class="form-control datepicker" [(ngModel)]="model.schoolDetails.enrollmentDate" #enrollmentDate="ngModel">
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-9 col-md-8 padding-bottom-30">
                     <div class="text-left">
-                        <button type="button" class="btn btn-primary">Save</button>
+                        <button type="button" class="btn btn-primary" (click)="saveSchoolDetails();">Save</button>
                         <button type="button" class="btn">Cancel</button>
                     </div>
                 </div>
@@ -193,49 +203,49 @@
                     <label class="form-label">Relationship With Student</label>
                     <span class="desc"></span>
                     <div class="controls">
-                        <input type="text" value="" class="form-control" [(ngModel)]="model.guardians[i].relationship">
+                        <input type="text" name="relation{{i}}" id="relation{{i}}" class="form-control" [(ngModel)]="model.guardians[i].relationship">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="form-label">First Name</label>
                     <span class="desc"></span>
                     <div class="controls">
-                        <input type="text" value="" class="form-control" [(ngModel)]="model.guardians[i].firstName">
+                        <input type="text"  name="firstName{{i}}" id="firstName{{i}}" class="form-control" [(ngModel)]="model.guardians[i].firstName">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="form-label">Last Name</label>
                     <span class="desc"></span>
                     <div class="controls">
-                        <input type="text" value="" class="form-control" [(ngModel)]="model.guardians[i].lastName">
+                        <input type="text" name="lastName{{i}}" id="lastName{{i}}" class="form-control" [(ngModel)]="model.guardians[i].lastName">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="form-label">Education Qualification</label>
                     <span class="desc"></span>
                     <div class="controls">
-                        <input type="text" value="" class="form-control" [(ngModel)]="model.guardians[i].qualification">
+                        <input type="text" name="qualification{{i}}" id="qualification{{i}}" class="form-control" [(ngModel)]="model.guardians[i].qualification">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="form-label">Phone</label>
                     <span class="desc"></span>
                     <div class="controls">
-                        <input type="text" value="" class="form-control" [(ngModel)]="model.guardians[i].phone">
+                        <input type="text" name="phone{{i}}" id="phone{{i}}" class="form-control" [(ngModel)]="model.guardians[i].phone">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="form-label">Mobile</label>
                     <span class="desc"></span>
                     <div class="controls">
-                        <input type="text" value="" class="form-control" [(ngModel)]="model.guardians[i].mobile">
+                        <input type="text" name="mobile{{i}}" id="mobile{{i}}" class="form-control" [(ngModel)]="model.guardians[i].mobile">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="form-label">Email</label>
                     <span class="desc"></span>
                     <div class="controls">
-                        <input type="text" value="" class="form-control" [(ngModel)]="model.guardians[i].email">
+                        <input type="text" name="email{{i}}" id="email{{i}}" class="form-control" [(ngModel)]="model.guardians[i].email">
                     </div>
                 </div>
             </div>
@@ -271,49 +281,49 @@
                     <label class="form-label">Address Type</label>
                     <span class="desc"></span>
                     <div class="controls">
-                        <input type="text" value="" class="form-control" [(ngModel)]="model.addresses[i].addressType">
+                        <input type="text" name="addressType{{i}}" id="addressType{{i}}" class="form-control" [(ngModel)]="model.addresses[i].addressType">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="form-label">Address Line1</label>
                     <span class="desc"></span>
                     <div class="controls">
-                        <input type="text" value="" class="form-control" [(ngModel)]="model.addresses[i].address1">
+                        <input type="text" name="address1{{i}}" id="address1{{i}}" class="form-control" [(ngModel)]="model.addresses[i].address1">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="form-label">Address Line2</label>
                     <span class="desc"></span>
                     <div class="controls">
-                        <input type="text" value="" class="form-control" [(ngModel)]="model.addresses[i].address2">
+                        <input type="text" name="address2{{i}}" id="address2{{i}}" class="form-control" [(ngModel)]="model.addresses[i].address2">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="form-label">City</label>
                     <span class="desc"></span>
                     <div class="controls">
-                        <input type="text" value="" class="form-control" [(ngModel)]="model.addresses[i].city">
+                        <input type="text" name="city{{i}}" id="city{{i}}" class="form-control" [(ngModel)]="model.addresses[i].city">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="form-label">State</label>
                     <span class="desc"></span>
                     <div class="controls">
-                        <input type="text" value="" class="form-control" [(ngModel)]="model.addresses[i].state">
+                        <input type="text" name="state{{i}}" id="state{{i}}" class="form-control" [(ngModel)]="model.addresses[i].state">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="form-label">Postal Code</label>
                     <span class="desc"></span>
                     <div class="controls">
-                        <input type="text" value="" class="form-control" [(ngModel)]="model.addresses[i].zip">
+                        <input type="text" name="zip{{i}}" id="zip{{i}}" class="form-control" [(ngModel)]="model.addresses[i].zip">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="form-label">Country</label>
                     <span class="desc"></span>
                     <div class="controls">
-                        <input type="text" value="" class="form-control" [(ngModel)]="model.addresses[i].country">
+                        <input type="text" name="country{{i}}" id="country{{i}}" class="form-control" [(ngModel)]="model.addresses[i].country">
                     </div>
                 </div>
             </div>
@@ -349,42 +359,42 @@
                     <label class="form-label">Class</label>
                     <span class="desc"></span>
                     <div class="controls">
-                        <input type="text" value="" class="form-control" [(ngModel)]="model.qualifications[i].class">
+                        <input type="text" name="class{{i}}" id="classs{{i}}" class="form-control" [(ngModel)]="model.qualifications[i].class">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="form-label">Grade</label>
                     <span class="desc"></span>
                     <div class="controls">
-                        <input type="text" value="" class="form-control" [(ngModel)]="model.qualifications[i].grade">
+                        <input type="text" name="grade{{i}}" id="grade{{i}}" class="form-control" [(ngModel)]="model.qualifications[i].grade">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="form-label">Score</label>
                     <span class="desc"></span>
                     <div class="controls">
-                        <input type="text" value="" class="form-control" [(ngModel)]="model.qualifications[i].score">
+                        <input type="text" name="score{{i}}" id="score{{i}}" class="form-control" [(ngModel)]="model.qualifications[i].score">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="form-label">Institution</label>
                     <span class="desc"></span>
                     <div class="controls">
-                        <input type="text" value="" class="form-control" [(ngModel)]="model.qualifications[i].institution">
+                        <input type="text" name="ints{{i}}" id="inst{{i}}" class="form-control" [(ngModel)]="model.qualifications[i].institution">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="form-label">Board / University</label>
                     <span class="desc"></span>
                     <div class="controls">
-                        <input type="text" value="" class="form-control" [(ngModel)]="model.qualifications[i].university">
+                        <input type="text" name="board{{i}}" id="board{{i}}" class="form-control" [(ngModel)]="model.qualifications[i].university">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="form-label">Passing Year</label>
                     <span class="desc"></span>
                     <div class="controls">
-                        <input type="text" value="" class="form-control" [(ngModel)]="model.qualifications[i].passingYear">
+                        <input type="text" name="year{{i}}" name="year{{i}}" class="form-control" [(ngModel)]="model.qualifications[i].passingYear">
                     </div>
                 </div>
             </div>

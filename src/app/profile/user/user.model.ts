@@ -41,10 +41,9 @@ export class Qualification{
 
 export class SchoolDetails {
     public userId: string;
-    public class: string;
-    public department: string;
+    public courseId: string;
     public section: string;
-    public entrollmentDate: string;
+    public enrollmentDate: string;
 }
 
 export class Profile {

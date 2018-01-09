@@ -24,6 +24,8 @@ export class UserComponent {
         if(this.model.termsAndCondition){
             this.model.termsAndCondition='1';
         }
+        this.model.isComplete="0";
+        this.model.obsolete="0";
         await this.profileService.createUser(this.model).then(result => this.model=result); 
     }
 }
