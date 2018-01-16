@@ -1,4 +1,4 @@
-import {Country,Religion,Nationality, Caste, StudentCategory} from './common.model';
+import {Country,Religion,Nationality, Caste, StudentCategory, Gender, Relation} from './common.model';
 
 export var COUNTRIES: Country[] =
 	 [ {
@@ -1052,3 +1052,25 @@ export var STUDENT_CATEGORIES: StudentCategory[] =
         "name" : "Sibling in school",
         "code" : "SIBLING",
       }]         
+
+
+export var GENDER: Gender[] =
+      [ {
+        "name" : "Male",
+        "code" : "Gender.MALE",
+      }, {
+        "name" : "Female",
+        "code" : "Gender.FEMALE",
+      }]    
+
+export var RELATIONSHIP: Relation[] =
+      [ {
+        "name" : "Father",
+        "code" : "Relation.FATHER",
+      }, {
+        "name" : "Mother",
+        "code" : "Relation.MOTHER",
+      }, {
+        "name" : "Guardian",
+        "code" : "Relation.GUARDIAN",
+      }]  

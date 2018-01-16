@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { Profile, User, SchoolDetails } from './user.model';
+import { Profile, User, SchoolDetails, AdditionalDetails } from './user.model';
 import { Observable }     from 'rxjs/Observable';
 
 import { RequestOptions, Headers, Http } from '@angular/http';
@@ -51,9 +51,24 @@ export class ProfileService {
         .catch(this.handleError);  
   }
 
+  saveAdditionalDetails(additionalDetails: AdditionalDetails): Promise<any> {
+      return this.http
+        .post("http://localhost:9004/additionalDetails", JSON.stringify(additionalDetails), { headers: this.headers })
+        .toPromise()
+        .then(res => res.json() as SchoolDetails)
+        .catch(this.handleError);  
+  }
+
+
   getSchoolDetails(userId:string):Observable<SchoolDetails> {
-      return this.http.get('http://localhost:9004/schoolDetails/' + userId).map(res => res.json()).map((data: SchoolDetails) => {
+      return this.http.get('http://localhost:9004/schoolDetails/search/findByUserId/?userId=' + userId).map(res => res.json()).map((data: SchoolDetails) => {
       return data as SchoolDetails;
+      });
+  }
+
+  getAdditionalDetails(userId:string):Observable<AdditionalDetails> {
+      return this.http.get('http://localhost:9004/additionalDetails/search/findByUserId/?userId=' + userId).map(res => res.json()).map((data: AdditionalDetails) => {
+      return data as AdditionalDetails;
       });
   }
 

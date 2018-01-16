@@ -18,7 +18,7 @@ export class User {
     public isComplete: string;
 }
 
-export class Guardian {
+export class Parent {
     public userId: string;
     public relationship: string;
     public firstName: string;
@@ -40,10 +40,22 @@ export class Qualification{
 }
 
 export class SchoolDetails {
+    public studentSchoolId: string;
     public userId: string;
     public courseId: string;
     public section: string;
     public enrollmentDate: string;
+    public studentCategory: string;
+}
+
+export class AdditionalDetails {
+    public additionaInfoId: string;
+    public userId: string;
+    public nationality: string;
+    public birthPlace: string
+    public religion : string;
+    public caste: string;
+    public subcaste: string;
 }
 
 export class Profile {

@@ -1,0 +1,107 @@
+<div class="col-xs-12">
+    <section class="box ">
+        <header class="panel_header">
+            <h2 class="title pull-left">Basic Info</h2>
+            <div class="actions panel_actions pull-right">
+                <a class="box_toggle fa fa-chevron-down"></a>
+                <a class="box_setting fa fa-cog" data-toggle="modal" href="#section-settings"></a>
+                <a class="box_close fa fa-times"></a>
+            </div>
+        </header>
+        <div class="content-body">
+        <div class="row">
+        <form action ="#" method="post">
+            <div class="col-xs-12 col-sm-3 col-md-8">
+                <div class="form-group">
+                    <label class="form-label" >First Name</label>
+                    <div class="controls">
+                    <input class="form-control" id="firstName" required [(ngModel)]="model.firstName" name="firstName" #firstName="ngModel">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" >Middle Name</label>
+                    <div class="controls">
+                    <input class="form-control" id="middleName" required [(ngModel)]="model.middleName" name="middleName" #name="ngModel">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" >Last Name</label>
+                    <div class="controls">
+                    <input class="form-control" id="lastName" required [(ngModel)]="model.lastName" name="lastName" #name="ngModel">
+                    </div>
+                </div>
+            
+                <div class="form-group">
+                    <label class="form-label" >Username</label>
+                    <div class="controls">
+                    <input class="form-control" id="username" required [(ngModel)]="model.username" name="username" #username="ngModel">
+                    </div>
+                </div>
+            
+                <div class="form-group">
+                    <label class="form-label" >Email</label>
+                    <div class="controls">
+                    <input class="form-control" id="email" required [(ngModel)]="model.email" name="email" #email="ngModel">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" >Phone</label>
+                    <div class="controls">
+                    <input class="form-control" id="phone" required [(ngModel)]="model.phone" name="phone" #phone="ngModel">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" >Mobile</label>
+                    <div class="controls">
+                    <input class="form-control" id="mobile" required [(ngModel)]="model.mobile" name="mobile" #mobile="ngModel">
+                    </div>
+                </div>
+            
+                <div class="form-group">
+                    <label class="form-label">Gender</label>
+                    <div class="controls">
+                    <select class="form-control" id="gender" [(ngModel)]="model.gender" name="gender" #gender="ngModel" required>
+                        <option value="0">Select Gender</option>
+                        <option *ngFor="let gender of genderList" [value]="gender.code">{{gender.name}}</option>
+                    </select>
+                    </div>
+                </div>
+            
+                <div class="form-group">
+                    <label class="form-label" >Date of Birth</label>
+                    <span class="desc">e.g. "04/03/2015"</span>
+                    <div class="controls">
+                    <input class="form-control datepicker" data-format="mm/dd/yyyy" id="dateOfBirth" required [(ngModel)]="model.dateOfBirth" name="dateOfBirth" #dateOfBirth="ngModel">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" >Profile Image</label>
+                    <span class="desc"></span>
+                    <div class="controls">
+                        <input type="file" class="form-control" >
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" >Brief Description</label>
+                    <span class="desc">e.g. "Any allergy or speciality"</span>
+                    <div class="controls">
+                        <textarea class="form-control autogrow" cols="5" ></textarea>
+                    </div>
+                </div>
+                      
+                <div class="col-xs-12 col-sm-9 col-md-8 padding-bottom-30">
+                    <div class="text-left">
+                        <button type="button" class="btn btn-primary" (click)="saveUser();">Save</button>
+                        <button type="button" class="btn">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+        </div>
+        </div>
+    </section>
+</div>
