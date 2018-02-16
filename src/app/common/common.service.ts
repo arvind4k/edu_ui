@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core';
 
 import { RequestOptions, Headers, Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import { Batch, PaymentFrequency, StudentCategory } from './common.model';
-import { STUDENT_CATEGORIES } from './data';
+import { Batch, PaymentFrequency, StudentCategory, Relation } from './common.model';
+import { STUDENT_CATEGORIES, RELATIONSHIP, RELIGIONS, COUNTRIES } from './data';
 
 
 @Injectable()
@@ -32,6 +32,28 @@ export class CommonService {
 
     getStudentCategories(): Array<StudentCategory> {
         return STUDENT_CATEGORIES;
+    }
+
+    getRelationshipDesc(relationId: string): string{
+        var relationshipDesc='';
+        for(let i=0;i<RELATIONSHIP.length;i++){
+            var obj = RELATIONSHIP[i];
+            if (relationId === obj.code) {
+                relationshipDesc = obj.name;
+            }
+        }
+        return relationshipDesc;
+    }
+
+    getCountryName(countryId: string): string{
+        var countryName='';
+        for(let i=0;i<COUNTRIES.length;i++){
+            var obj = COUNTRIES[i];
+            if (countryId === obj.alpha3_code) {
+                countryName = obj.name;
+            }
+        }
+        return countryName;
     }
 
     private handleError(error: Response | any) {

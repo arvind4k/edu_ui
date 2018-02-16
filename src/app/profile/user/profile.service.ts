@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { Profile, User, SchoolDetails, AdditionalDetails } from './user.model';
+import { Profile, User, SchoolDetails, AdditionalDetails, ParentDetails, Education } from './user.model';
 import { Observable }     from 'rxjs/Observable';
 
 import { RequestOptions, Headers, Http } from '@angular/http';
@@ -69,6 +69,34 @@ export class ProfileService {
   getAdditionalDetails(userId:string):Observable<AdditionalDetails> {
       return this.http.get('http://localhost:9004/additionalDetails/search/findByUserId/?userId=' + userId).map(res => res.json()).map((data: AdditionalDetails) => {
       return data as AdditionalDetails;
+      });
+  }
+
+  saveParentDetails(parentDetails: ParentDetails): Promise<any> {
+      return this.http
+        .post("http://localhost:9004/parentDetails", JSON.stringify(parentDetails), { headers: this.headers })
+        .toPromise()
+        .then(res => res.json() as ParentDetails)
+        .catch(this.handleError);  
+  }
+
+  getParentDetails(userId:string):Observable<ParentDetails[]> {
+      return this.http.get('http://localhost:9004/parentDetails/search/findByUserId/?userId=' + userId).map(res => res.json()).map((data: ParentDetails[]) => {
+      return data["_embedded"].parentDetails as ParentDetails[];
+      });
+  }
+
+  saveEducationDetails(education: Education): Promise<any> {
+      return this.http
+        .post("http://localhost:9004/educationDetails", JSON.stringify(education), { headers: this.headers })
+        .toPromise()
+        .then(res => res.json() as Education)
+        .catch(this.handleError);  
+  }
+
+  getEducationDetails(userId:string):Observable<Education[]> {
+      return this.http.get('http://localhost:9004/educationDetails/search/findByUserId/?userId=' + userId).map(res => res.json()).map((data: Education[]) => {
+      return data["_embedded"].educationDetails as Education[];
       });
   }
 

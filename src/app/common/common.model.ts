@@ -4,7 +4,11 @@ import {COUNTRIES,RELIGIONS,NATIONALITIES,CASTES} from './data';
 export enum PType {PHONE, MOBILE, EMAIL, FAX, FACEBOOK, TWITTER};
 export enum AddressType {HOME, RESIDENTIAL, BUSINESS, PERMANENT, RENTED, OFFICE};
 
-export class Country{}
+export class Country{
+    name: string;
+    alpha2_code: string;
+    alpha3_code: string;
+}
 
 export class Nationality{}
 
@@ -18,7 +22,10 @@ export class StudentCategory{}
 
 export class Gender{}
 
-export class Relation{}
+export class Relation{
+    code: string;
+    name: string;
+}
 
 export class Batch{
     batchId: string;

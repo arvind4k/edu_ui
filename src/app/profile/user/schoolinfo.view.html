@@ -46,6 +46,15 @@
                         </select>
                     </div>
                 </div>
+                <div class="form-group">
+                    <label class="form-label">Transport Route</label>
+                    <span class="desc"></span>
+                    <div class="controls">
+                        <select class="form-control" id="transportId" [(ngModel)]="model.transportId" name="transportId" #transportId="ngModel" required>
+                            <option value="0">Select A Route</option>
+                        </select>
+                    </div>
+                </div>
                 <div class="col-xs-12 col-sm-9 col-md-8 padding-bottom-30">
                     <div class="text-left">
                         <button type="button" class="btn btn-primary" (click)="saveSchoolDetails();">Save</button>

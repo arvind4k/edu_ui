@@ -36,7 +36,6 @@ export class PersonalInfoComponent {
   getUser(userId: string){
     this.profileService.getUser(userId).subscribe((data: User) => {
       this.model = data;
-      console.log('data ='+data);
     });
   }
 } 

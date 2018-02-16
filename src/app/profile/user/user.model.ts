@@ -18,7 +18,8 @@ export class User {
     public isComplete: string;
 }
 
-export class Parent {
+export class ParentDetails {
+    public guardianId: string
     public userId: string;
     public relationship: string;
     public firstName: string;
@@ -27,16 +28,19 @@ export class Parent {
     public mobile: string;
     public email: string;
     public qualification: string;
+    public relationshipDesc: string;
 }
 
-export class Qualification{
+export class Education{
+    public educationId: string;
     public userId: string;
-    public class: string;
+    public course: string;
     public grade: string;
     public score: string;
     public institution: string;
     public university: string;
     public passingYear: string;
+    public obsolete: string;
 }
 
 export class SchoolDetails {
@@ -46,6 +50,7 @@ export class SchoolDetails {
     public section: string;
     public enrollmentDate: string;
     public studentCategory: string;
+    public transportId: string;
 }
 
 export class AdditionalDetails {
@@ -59,10 +64,6 @@ export class AdditionalDetails {
 }
 
 export class Profile {
-	public user: User=new User();
-    public guardians:Array<Guardian>=[];
-    public addresses:Array<Address>=[];
-    public schoolDetails: SchoolDetails=new SchoolDetails();
-    public qualifications: Array<Qualification>=[];
+	
 }
 

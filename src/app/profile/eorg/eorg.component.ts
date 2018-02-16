@@ -117,7 +117,7 @@ export class EorgComponent {
   async saveAddress(){
     for(var i = 0; i < this.addresses.length; i++){
       this.addresses[i].modId = this.model.entityId;
-      await this.addressService.createAddress(this.addresses[i]).then(result => this.addresses[i]=result);
+      await this.addressService.saveAddress(this.addresses[i]).then(result => this.addresses[i]=result);
    }
   }
   

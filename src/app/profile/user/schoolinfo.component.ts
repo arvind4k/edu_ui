@@ -29,6 +29,7 @@ export class SchoolInfoComponent {
       this.userId=this.authenticationService.getUserId();
       this.getCourses();
       this.model.courseId="0";
+      this.model.transportId="0";
 
       /*if(null!=this.userId){
         this.getUser(this.userId);

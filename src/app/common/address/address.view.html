@@ -1,64 +1,108 @@
-
-	<!-- 
-<div class="container">
-
-
-	<form (ngSubmit)="onSubmitGet()" #userForm="ngForm">
-		<b>{{message}}</b>
-		<br>
-		<input name="action"  [(ngModel)]="action.method" type="radio" value="Update" /> Update
-		<input name="action" [(ngModel)]="action.method" type="radio" value="View" /> View
-		<input name="action" [(ngModel)]="action.method" type="radio" value="Create" /> Create
-		<input name="action" [(ngModel)]="action.method" type="radio" value="Delete" /> Delete
-	</form>
-	
-
-	<form (ngSubmit)="onSubmit()" #userForm="ngForm"  >
-		
-		<div class="form-group" *ngIf="action.method == 'Update' || action.method == 'View' || action.method == 'Delete'">
-			<label for="userId"  >Address ID</label>
-			<input type="text"  (keyup)="onActionGet()" size=20 class="form-control" id="addressId" required [(ngModel)]="model.addressId" name="addressId" #addressId="ngModel">
-		</div>
-
-		<br>
-	
-	
-		<fieldset class="form-group"  *ngIf="action.method == 'Create' || action.submethod == 'View'" [disabled]="action.method == 'View' || action.method == 'Delete'"> 
-	
-		-->
-		
-		<div class="form-group" >
-			<label for="addressType">Address Type</label>
-			<select class="form-control" id="addressType" [(ngModel)]="model.addressType" name="addressType" addressType="ngModel">
-				<option *ngFor="let addressType of addressTypes" [value]="addressType">{{addressType}}</option>
-			</select>
-
-			<label for="address1">Address Line1</label>
-			<input type="text" class="form-control" id="address1" required [(ngModel)]="model.address1" name="address1" #address1="ngModel">
+<div class="col-xs-12">
+    <section class="box ">
+        <header class="panel_header">
+            <h2 class="title pull-left">Address Info</h2>
+            <div class="actions panel_actions pull-right">
+                <a class="box_toggle fa fa-chevron-down"></a>
+                <a class="box_setting fa fa-cog" data-toggle="modal" href="#section-settings"></a>
+                <a class="box_close fa fa-times"></a>
+            </div>
+        </header>
+        <div class="content-body">
+        <div class="row">
+        <form action ="#" method="post">
+            <div class="col-xs-12 col-sm-3 col-md-8">
+                <div class="table-responsive">
+                <table *ngIf="addresses.length>0" id="addresses" class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Address Type</th>
+                        <th>Address Line1</th>
+                        <th>City</th>
+                        <th>Postal Code</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let address of addresses, let i=index">
+                        <td><a (click)="viewAddressInfo(i)">{{address.addressType}}</a></td>
+                        <td>{{address.address1}}</td>
+                        <td>{{address.city}}</td>
+                        <td>{{address.zip}}</td>
+                    </tr>
+                </tbody>
+                </table>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Address Type</label>
+                    <span class="desc"></span>
+                    <div class="controls">
+                        <select class="form-control" id="addressType" [(ngModel)]="model.addressType" name="relationship" #addressType="ngModel">
+                        <option value="0">Select Address Type</option>
+                        <option *ngFor="let addressType of addressTypes" [value]="addressType">{{addressType}}</option>
+                    </select>
+                    </div>
+                </div>
 			
-			<label for="address1">Address Line2</label>
-			<input type="text" class="form-control" id="address2" required [(ngModel)]="model.address2" name="address2" #address2="ngModel">
-	
-			<label for="city">City</label>
-			<input type="text" class="form-control" id="city" required [(ngModel)]="model.city" name="city" #city="ngModel">
-			
-			<label for="state">State</label>
-			<input type="text" class="form-control" id="state" required [(ngModel)]="model.state" name="state" #state="ngModel">
-	
-			<label for="state">Country</label>
-			<input type="text" class="form-control" id="country" required [(ngModel)]="model.country" name="country" #name="ngModel">
-	
-			<label for="state">Zip/Pincode</label>
-			<input type="text" class="form-control" id="zip" required [(ngModel)]="model.zip" name="zip" #zip="ngModel">
-	
-		</div>	
+				<div class="form-group">
+                    <label class="form-label">Address Line1</label>
+                    <span class="desc"></span>
+                    <div class="controls">
+                        <input type="text"  name="address1" id="address1" class="form-control" [(ngModel)]="model.address1" #address1="ngModel">
+                    </div>
+                </div>
 
-<!--
-	</fieldset>
-	
-	<button type="submit" *ngIf="(((action.method == 'Update' || action.method == 'Delete') && action.submethod == 'View' ) || action.method == 'Create') " class="btn btn-success" >Perform Action</button>
-	
-	</form>
+                <div class="form-group">
+                    <label class="form-label">Address Line2</label>
+                    <span class="desc"></span>
+                    <div class="controls">
+                        <input type="text"  name="address2" id="address2" class="form-control" [(ngModel)]="model.address2" #address2="ngModel">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">City</label>
+                    <span class="desc"></span>
+                    <div class="controls">
+                        <input type="text"  name="city" id="city" class="form-control" [(ngModel)]="model.city" #city="ngModel">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">State</label>
+                    <span class="desc"></span>
+                    <div class="controls">
+                        <input type="text"  name="state" id="state" class="form-control" [(ngModel)]="model.state" #state="ngModel">
+                    </div>
+                </div>
+				
+				<div class="form-group">
+                    <label class="form-label">Country</label>
+                    <span class="desc"></span>
+                    <div class="controls">
+                        <select class="form-control" id="country" [(ngModel)]="model.country" name="country" #country="ngModel">
+                        <option *ngFor="let country of countries" [value]="country.alpha3_code">{{country.name}}</option>
+                    </select>
+                    </div>
+                </div>
+			
+				<div class="form-group">
+                    <label class="form-label">Postal Code</label>
+                    <span class="desc"></span>
+                    <div class="controls">
+                        <input type="text" name="zip" id="zip" class="form-control" [(ngModel)]="model.zip" #zip="ngModel">
+                    </div>
+                </div>
+				
+				<div class="col-xs-12 col-sm-9 col-md-8 padding-bottom-30">
+                    <div class="text-left">
+                        <button type="button" class="btn btn-primary" (click)="addMore()">Add More</button>
+                        <button type="button" class="btn btn-primary" (click)="saveAddress()">Save</button>
+                        <button type="button" class="btn">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+        </div>
+        </div>
+    </section>
 </div>
--->
-

@@ -9,6 +9,7 @@ export class Address {
     public address1: string;
     public address2: string;
     public country: string;
+    public countryName: string;
     public zip: string;
     public city: string;
     public state: string;
@@ -19,4 +20,3 @@ export class Action {
     public method: string;
     public submethod: string;
 }
-

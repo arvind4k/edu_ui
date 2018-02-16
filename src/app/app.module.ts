@@ -35,6 +35,7 @@ import { PersonalInfoComponent } from './profile/user/personalinfo.component';
 import { SchoolInfoComponent } from './profile/user/schoolinfo.component';
 import { AdditionalInfoComponent } from './profile/user/additionalinfo.component';
 import { ParentInfoComponent } from './profile/user/parentinfo.component';
+import { EducationInfoComponent } from './profile/user/educationinfo.component';
 import { AddressComponent } from './common/address/address.component';
 import { AddressService } from './common/address/address.service';
 import { EorgComponent } from './profile/eorg/eorg.component';
@@ -85,7 +86,8 @@ import { RoleService } from './admin/security/role.service';
     PersonalInfoComponent,
     SchoolInfoComponent,
     AdditionalInfoComponent,
-    ParentInfoComponent
+    ParentInfoComponent,
+    EducationInfoComponent
   ],
   providers:[ ProfileService, FeeService, CommonService, DiscountService, DatePipe, 
               AuthenticationService, CanActivateAuthGuard, AddressService, TransportService, DepartmentService, CourseService, SchoolYearService, RoleService, EorgService],
