@@ -2,7 +2,9 @@ import { Component } from '@angular/core';
 import { LABELS } from './labels'
 import { FeeCategory } from './fee.model';
 
-import { Batch } from '../common/common.model'
+import { CourseService } from '../admin/course/course.service'
+import { Course } from '../admin/course/course.model'
+
 import { FeeService } from './fee.service'
 import { CommonService } from '../common/common.service';
 import { Observable } from 'rxjs/Observable';
@@ -14,7 +16,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 
 export class FeeListComponent {
-    batches: Batch[];
+    courses:Array<Course>=[];
     feeList:Array<FeeCategory>=[];
     batchId: string;
 
@@ -23,10 +25,11 @@ export class FeeListComponent {
         private feeService: FeeService, 
         private router: Router,
         private route: ActivatedRoute,
+        private courseService: CourseService,
     ) { }
 
     ngOnInit(): void {
-        this.getAllBatches();
+        this.getCourses();
         let id=this.route.snapshot.paramMap.get('id');
         this.batchId=id;
         if(id=="0"){
@@ -36,11 +39,11 @@ export class FeeListComponent {
         }
     }
 
-    //Fetch all batches
-    getAllBatches() {
-        this.commonService.getBatches().subscribe((data: Array<Batch>) => {
-        this.batches = data;
-        });
+    //Fetch all cpourses
+    getCourses(){
+    this.courseService.getCourses(25,2).subscribe((data: Array<Course>) => {
+      this.courses = data;
+      });
     }
 
     getFeeList() {

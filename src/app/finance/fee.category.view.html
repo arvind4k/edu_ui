@@ -103,10 +103,10 @@
 				<div class="form-group">
 		    		<label class="form-label">Select Class(es)</label>
 		    		<span class="desc"></span>
-		    		<div *ngFor="let batch of batches" let i="index">
+		    		<div *ngFor="let course of courses" let i="index">
 			        	<label>
-			            	<input type="checkbox" value='{{batch.batchName}}' checked='{{batch.checked}}' (change)="checkedBatches(batch.batchId)" id={{batch.batchId}}>
-			            	{{batch.batchName}}
+			            	<input type="checkbox" value='{{course.courseName}}' checked='{{course.checked}}' (change)="checkedBatches(course.courseId)" id={{course.courseId}}>
+			            	{{course.courseName}}
 			        	</label>
 		    		</div>
 				</div>

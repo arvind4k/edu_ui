@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { LABELS } from './labels'
 import { FeeCategory, FeeParticular } from './fee.model';
-
-import { Batch,PaymentFrequency } from '../common/common.model'
+import { CourseService } from '../admin/course/course.service'
+import { Course } from '../admin/course/course.model'
+import { PaymentFrequency } from '../common/common.model'
 import { FeeService } from './fee.service'
 import { DiscountService } from './discount/discount.service'
 import { Discount } from './discount/discount.model'
@@ -16,7 +17,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 
 export class FeeViewComponent {
-    batches: Batch[];
     feeCategory= new FeeCategory();
     feeParticulars: Array<FeeParticular>=[new FeeParticular()];
     batchId: string;

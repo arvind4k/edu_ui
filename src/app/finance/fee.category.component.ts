@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { FeeCategory, FeeBatchMapping } from './fee.model'
 import { LABELS } from './labels'
-import { Batch,PaymentFrequency } from '../common/common.model'
+import { CourseService } from '../admin/course/course.service'
+import { Course } from '../admin/course/course.model'
+import { PaymentFrequency } from '../common/common.model'
 import { CommonService } from '../common/common.service'
 import { FeeService } from './fee.service'
 import { Observable } from 'rxjs/Observable';
@@ -15,7 +17,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class FeeCategoryComponent {
     model = new FeeCategory();
     paymentFrequencies:PaymentFrequency[];
-    batches: Batch[];
+    courses:Array<Course>=[];
     batchMapping:Array<FeeBatchMapping>=[];
     submitted = false;
     feeCategory:FeeCategory;
@@ -26,10 +28,11 @@ export class FeeCategoryComponent {
         private feeService: FeeService, 
         private router: Router,
         private route: ActivatedRoute,
+        private courseService: CourseService,
     ) { }
 
     ngOnInit(): void {
-        this.getAllBatches();
+        this.getCourses();
         this.getAllPaymentFrequencies();
         let id = parseInt(this.route.snapshot.paramMap.get('feeId'));    
         if(id>0){
@@ -43,9 +46,9 @@ export class FeeCategoryComponent {
         }
     }
 
-    getAllBatches() {
-        this.commonService.getBatches().subscribe((data: Array<Batch>) => {
-        this.batches = data;
+    getCourses(){
+        this.courseService.getCourses(25,2).subscribe((data: Array<Course>) => {
+        this.courses = data;
         });
     }
 
@@ -58,10 +61,10 @@ export class FeeCategoryComponent {
     getFeeCategoryById(id: string) {
         this.feeService.getFeeCategoryById(id).subscribe((data: FeeCategory) => {
         this.model = data;
-        for(let i=0;i<this.batches.length;i++){
+        for(let i=0;i<this.courses.length;i++){
             for(let j=0;j<this.model.feeBatchMapping.length;j++){
-                if(this.model.feeBatchMapping[j].batchId==this.batches[i].batchId){
-                    this.batches[i].checked="checked";    
+                if(this.model.feeBatchMapping[j].batchId==this.courses[i].courseId){
+                    this.courses[i].checked="checked";    
                 }
             }
         }

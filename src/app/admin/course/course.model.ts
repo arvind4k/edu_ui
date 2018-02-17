@@ -1,10 +1,11 @@
 export class Course {
-    public courseId: number;
+    public courseId: string;
     public courseName: string;
     public educationLevel: number;
     public obsolete: string;
     public schoolYearId: number;
     public entityId: number;
+    public checked: string;
     public courseParticulars: Array<CourseParticulars>;
 }
 

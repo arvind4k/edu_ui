@@ -43,7 +43,7 @@
                                     <span class="desc"></span>
                                     <select class="form-control" id="batchId" [(ngModel)]="batchId" name="batchId" batchId="ngModel" (change)= "getFeeList()">
                                         <option [value]="0">Select a Class</option>
-                                        <option *ngFor="let batch of batches" [value]="batch.batchId">{{batch.batchName}}</option>
+                                        <option *ngFor="let course of courses" [value]="course.courseId">{{course.courseName}}</option>
                                     </select>
                                 </div>
                             </div>

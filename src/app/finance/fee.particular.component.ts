@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { FeeCategory, FeeBatchMapping, FeeParticular } from './fee.model'
-import { Batch,PaymentFrequency } from '../common/common.model'
+import { PaymentFrequency } from '../common/common.model'
 import { CommonService } from '../common/common.service'
 import { FeeService } from './fee.service'
 import { Observable } from 'rxjs/Observable';
